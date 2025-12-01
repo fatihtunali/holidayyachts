@@ -136,7 +136,7 @@ export default function HomePage() {
       {/* Features Section */}
       <section className="py-12 md:py-16 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -172,9 +172,9 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {yachts.map((yacht) => (
-              <YachtCard key={yacht.id} yacht={yacht} variant="compact" />
+              <YachtCard key={yacht.id} yacht={yacht}  />
             ))}
           </div>
 
@@ -203,7 +203,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {itineraries.map((itinerary) => (
               <Link
                 key={itinerary.id}
