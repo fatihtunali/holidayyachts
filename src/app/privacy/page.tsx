@@ -337,7 +337,7 @@ Für Datenschutzanfragen können Sie auch unseren Datenschutzbeauftragten unter 
     }
   };
 
-  const pageContent = content[language] || content.en;
+  const lang = language === "fr" ? "en" : language; const pageContent = content[lang as keyof typeof content] || content.en;
 
   return (
     <>
@@ -400,7 +400,7 @@ Für Datenschutzanfragen können Sie auch unseren Datenschutzbeauftragten unter 
             {/* Contact Box */}
             <div className="mt-12 p-6 bg-slate-50 rounded-xl">
               <h3 className="text-lg font-semibold text-slate-800 mb-4">
-                {language === "tr" ? "Sorularınız mı var?" : language === "de" ? "Haben Sie Fragen?" : "Have Questions?"}
+                {language === "de" ? "Haben Sie Fragen?" : language === "fr" ? "Des Questions ?" : "Have Questions?"}
               </h3>
               <div className="flex flex-wrap gap-6">
                 <a

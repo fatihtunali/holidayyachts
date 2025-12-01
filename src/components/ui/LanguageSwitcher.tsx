@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 
 const languages: { code: Language; label: string }[] = [
   { code: "en", label: "EN" },
-  { code: "tr", label: "TR" },
   { code: "de", label: "DE" },
+  { code: "fr", label: "FR" },
 ];
 
 interface LanguageSwitcherProps {

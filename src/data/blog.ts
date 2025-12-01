@@ -77,7 +77,7 @@ Popular yachts book 4-6 months in advance for summer dates. Contact us early to 
         `,
         tags: ["blue cruise", "turkey", "best time", "weather", "planning"],
       },
-      tr: {
+      fr: {
         title: "Türkiye'de Mavi Yolculuk İçin En İyi Zaman: 2025 Rehberi",
         excerpt:
           "Türkiye'nin Turkuaz Kıyısı'nda yelken açmak için en uygun ayları keşfedin. Hava koşullarından kalabalık seviyelerine kadar ideal yat kiralama planınız için bilmeniz gereken her şeyi ele alıyoruz.",
@@ -239,7 +239,7 @@ For those wanting to combine Turkey with Greek islands or seeking a more cosmopo
         `,
         tags: ["fethiye", "bodrum", "comparison", "destinations", "turkey"],
       },
-      tr: {
+      fr: {
         title: "Fethiye vs Bodrum: Hangi Türk Yelken Destinasyonu Size Uygun?",
         excerpt:
           "Türkiye'nin en popüler iki yat kiralama destinasyonunu karşılaştırıyoruz. Mükemmel mavi yolculuk başlangıç noktanızı seçmek için her bölgenin benzersiz özelliklerini keşfedin.",
@@ -442,7 +442,7 @@ Travel light, live light, and enjoy every moment of your blue cruise adventure!
         `,
         tags: ["packing", "tips", "preparation", "what to bring"],
       },
-      tr: {
+      fr: {
         title: "Yat Kiralama İçin Ne Paketlemeli: Eksiksiz Paketleme Listesi",
         excerpt:
           "Türkiye'de gulet turu için temel paketleme rehberimiz. Kıyafetten cihazlara kadar mükemmel yelken tatili için ihtiyacınız olan her şey.",
@@ -681,7 +681,7 @@ Meals on a gulet are social occasions. Dining together on the aft deck under the
         `,
         tags: ["food", "cuisine", "turkish", "dining", "chef"],
       },
-      tr: {
+      fr: {
         title: "Bir Lezzet Yolculuğu: Gulet Kiralamada Türk Mutfağı",
         excerpt:
           "Gemideki şeflerimiz tarafından her gün taze hazırlanan Türk mutfağının lezzetli dünyasını keşfedin. Mezeden taze deniz ürünlerine, her öğün bir kutlama.",

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${yacht.name} | ${yacht.length}m Gulet Charter`,
-    description: `Charter ${yacht.name}, a luxurious ${yacht.length}m gulet with ${yacht.cabins} cabins for ${yacht.guests} guests. ${yacht.shortDescription} Professional crew, all-inclusive. From €${yacht.pricePerWeek.low}/week.`,
+    description: `Charter ${yacht.name}, a luxurious ${yacht.length}m gulet with ${yacht.cabins} cabins for ${yacht.guests} guests. ${yacht.shortDescription} Professional crew, all-inclusive. From €${yacht.pricePerDay?.aprilMay || yacht.pricePerWeek?.low || 0}${yacht.pricePerDay ? '/day' : '/week'}.`,
     keywords: [
       yacht.name.toLowerCase(),
       `${yacht.length}m gulet`,

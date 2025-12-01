@@ -61,7 +61,8 @@ export function YachtCard({
             {yacht.length}m • {yacht.cabins} {t("yacht.cabins")} • {yacht.guests} {t("yacht.guests")}
           </p>
           <p className="text-amber-500 font-semibold mt-1">
-            {t("common.from")} {formatPrice(yacht.pricePerWeek.low, yacht.currency)}{t("yacht.perWeek")}
+            {t("common.from")} {formatPrice(yacht.pricePerDay?.aprilMay || yacht.pricePerWeek?.low || 0, yacht.currency)}
+            {yacht.pricePerDay ? t("yacht.perDayShort") : t("yacht.perWeek")}
           </p>
         </div>
         <ArrowRight className="h-5 w-5 text-slate-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
@@ -130,8 +131,10 @@ export function YachtCard({
             <div>
               <p className="text-xs text-slate-500">{t("yacht.priceFrom")}</p>
               <p className="text-2xl font-bold text-slate-800">
-                {formatPrice(yacht.pricePerWeek.low, yacht.currency)}
-                <span className="text-sm font-normal text-slate-500">{t("yacht.perWeek")}</span>
+                {formatPrice(yacht.pricePerDay?.aprilMay || yacht.pricePerWeek?.low || 0, yacht.currency)}
+                <span className="text-sm font-normal text-slate-500">
+                  {yacht.pricePerDay ? t("yacht.perDayShort") : t("yacht.perWeek")}
+                </span>
               </p>
             </div>
             <Link href={`/yachts/${yacht.slug}`}>
@@ -197,7 +200,10 @@ export function YachtCard({
           <div className="text-right">
             <p className="text-xs text-slate-500">{t("common.from")}</p>
             <p className="text-lg font-bold text-amber-500">
-              {formatPrice(yacht.pricePerWeek.low, yacht.currency)}
+              {formatPrice(yacht.pricePerDay?.aprilMay || yacht.pricePerWeek?.low || 0, yacht.currency)}
+              <span className="text-xs font-normal">
+                {yacht.pricePerDay ? t("yacht.perDayShort") : ""}
+              </span>
             </p>
           </div>
         </div>

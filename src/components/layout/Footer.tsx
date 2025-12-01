@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   Anchor,
   Phone,
@@ -9,7 +10,6 @@ import {
   Facebook,
   Instagram,
   Youtube,
-  Award,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
@@ -180,12 +180,18 @@ export function Footer() {
             </ul>
 
             {/* TURSAB Badge */}
-            <div className="mt-8 p-4 bg-slate-800 rounded-lg">
-              <div className="flex items-center gap-3">
-                <Award className="h-10 w-10 text-amber-400" />
+            <div className="mt-8 p-4 bg-white rounded-lg">
+              <div className="flex items-center gap-4">
+                <Image
+                  src="/assets/images/tursab-badge.png"
+                  alt="TÜRSAB - Association of Turkish Travel Agencies"
+                  width={80}
+                  height={36}
+                  className="object-contain"
+                />
                 <div>
-                  <p className="text-sm font-semibold">{t("footer.tursab")}</p>
-                  <p className="text-xs text-slate-400">{t("footer.workingHours")}</p>
+                  <p className="text-sm font-semibold text-slate-800">{t("footer.tursab")}</p>
+                  <p className="text-xs text-slate-500">{t("footer.workingHours")}</p>
                 </div>
               </div>
             </div>

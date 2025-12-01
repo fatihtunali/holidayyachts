@@ -91,7 +91,7 @@ Whether you're seeking relaxation on secluded beaches, exploring ancient Lycian 
           },
         ],
       },
-      tr: {
+      fr: {
         title: "Fethiye - Turkuaz Kıyısının Kapısı",
         description:
           "Türkiye'nin muhteşem Turkuaz Kıyısı boyunca Mavi Yolculuk maceranız için mükemmel başlangıç noktası olan büyüleyici liman kasabası Fethiye'yi keşfedin.",
@@ -266,7 +266,7 @@ Gocek is particularly popular among experienced sailors who appreciate its calm 
           },
         ],
       },
-      tr: {
+      fr: {
         title: "Göcek - Özel Yatçılık Cenneti",
         description:
           "12 ada ve sayısız tenha koy ile çevrili, seçici yat kiralama misafirleri için mükemmel üst düzey marina köyü Göcek'i deneyimleyin.",
@@ -441,7 +441,7 @@ The surrounding coastline features an incredible variety of landscapes, from pin
           },
         ],
       },
-      tr: {
+      fr: {
         title: "Marmaris - Ege'nin Akdeniz ile Buluştuğu Yer",
         description:
           "Ege ve Akdeniz'in buluştuğu muhteşem bir körfezde yer alan, çeşitli yelken deneyimleri sunan canlı kıyı şehri Marmaris'i keşfedin.",
@@ -616,7 +616,7 @@ For yacht charters, Bodrum provides easy access to the stunning Gokova Gulf and,
           },
         ],
       },
-      tr: {
+      fr: {
         title: "Bodrum - Antik Tarih ve Modern Lüksün Buluşması",
         description:
           "Efsanevi antik Halikarnas olan, şimdi zengin tarihi kozmopolit Akdeniz yaşam tarzıyla harmanlayan sofistike tatil beldesi Bodrum'u keşfedin.",
@@ -791,7 +791,7 @@ The surrounding coastline features numerous Lycian archaeological sites, includi
           },
         ],
       },
-      tr: {
+      fr: {
         title: "Kekova - Batık Şehir Gizemi",
         description:
           "Ünlü Batık Şehir'e, antik Likya kalıntılarına ve Türkiye'nin en bozulmamış ve korunaklı yelken sularından bazılarına ev sahipliği yapan Kekova'yı ziyaret edin.",

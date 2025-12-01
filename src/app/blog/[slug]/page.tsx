@@ -40,7 +40,7 @@ export default function BlogPostPage() {
   }
 
   const formatDate = (dateString: string) => {
-    const locale = language === "tr" ? "tr-TR" : language === "de" ? "de-DE" : "en-US";
+    const locale = language === "de" ? "de-DE" : language === "fr" ? "fr-FR" : "en-US";
     return new Date(dateString).toLocaleDateString(locale, {
       year: "numeric",
       month: "long",

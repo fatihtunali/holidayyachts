@@ -103,7 +103,7 @@ export const itineraries: Itinerary[] = [
           },
         ],
       },
-      tr: {
+      fr: {
         name: "Fethiye - Göcek - Fethiye",
         description: "Bu klasik 7 günlük rotada Turkuaz Kıyısı'nın muhteşem güzelliğini keşfedin. Fethiye'nin canlı limanından Göcek'in tenha koylarına, kristal berraklığında suları, antik kalıntıları ve otantik Türk misafirperverliğini deneyimleyin.",
         highlights: [
@@ -304,7 +304,7 @@ export const itineraries: Itinerary[] = [
           },
         ],
       },
-      tr: {
+      fr: {
         name: "Fethiye - Kekova - Fethiye",
         description: "Batık şehri ve dramatik kıyı şeridiyle ünlü büyüleyici Kekova bölgesine doğuya yolculuk yapın. Bu rota doğal güzelliği zengin tarihi mirasla birleştiriyor.",
         highlights: [
@@ -505,7 +505,7 @@ export const itineraries: Itinerary[] = [
           },
         ],
       },
-      tr: {
+      fr: {
         name: "Fethiye - Marmaris - Fethiye",
         description: "Fethiye'den Marmaris'e batı Turkuaz Kıyısı'nda yelken açın, çam ağaçlarıyla kaplı koyları keşfedin ve tarihi tatil beldesini ziyaret edin.",
         highlights: [
@@ -706,7 +706,7 @@ export const itineraries: Itinerary[] = [
           },
         ],
       },
-      tr: {
+      fr: {
         name: "Bodrum - Gökova - Bodrum",
         description: "Kozmopolit Bodrum'dan dramatik Gökova Körfezi'ni keşfedin. Bu rota, sofistike gece hayatı ve el değmemiş doğal koyların mükemmel bir karışımını sunuyor.",
         highlights: [

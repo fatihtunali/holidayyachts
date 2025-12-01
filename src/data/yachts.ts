@@ -29,7 +29,7 @@ Built in 2018 and renovated in 2023, Holiday 10 features spacious sun decks, a s
 Whether you're seeking a romantic getaway, a family adventure, or an exclusive group charter, M/S Holiday 10 delivers an exceptional sailing experience with breathtaking views of the Aegean and Mediterranean seas.`,
         shortDescription: "Luxury 32m gulet with 6 cabins, perfect for groups of up to 12 guests seeking the ultimate blue cruise experience.",
       },
-      tr: {
+      fr: {
         description: `M/S Holiday 10, geleneksel Türk işçiliği ile modern konforu mükemmel bir şekilde harmanlayan lüks bir 32 metrelik gulettir. 6 zarif kamarası ile muhteşem Türkiye kıyıları boyunca unutulmaz bir mavi yolculuk deneyimi için 12 misafire kadar rahatça ev sahipliği yapar.
 
 2018 yılında inşa edilmiş ve 2023 yılında yenilenmiş olan Holiday 10, geniş güneşlenme güverteleri, şık bir salon ve dünya standartlarında olanaklar sunar. 4 kişilik deneyimli mürettebatı, gurme Akdeniz mutfağından kişiselleştirilmiş gezilere kadar yolculuğunuz boyunca kusursuz hizmet sağlar.
@@ -80,11 +80,29 @@ Ob Sie einen romantischen Urlaub, ein Familienabenteuer oder einen exklusiven Gr
       { id: "h10-7", src: "/assets/images/yachts/holiday10/07.jpg", alt: "M/S Holiday 10 Sun Deck", category: "deck" },
     ],
     thumbnail: "/assets/images/yachts/holiday10.jpg",
-    pricePerWeek: {
-      low: 14000,
-      mid: 18000,
-      high: 24000,
+    pricePerDay: {
+      aprilMay: 3500,
+      juneSeptember: 4000,
+      julyAugust: 4500,
+      october: 3500,
     },
+    minDays: 7,
+    inclusions: [
+      "Fuel",
+      "Boat rental, equipment, and crew",
+      "Clean bed linen, beach towels, and bath towels",
+      "Port taxes and permits",
+      "Turkish transit log",
+      "Fresh water",
+      "Boat insurance",
+    ],
+    exclusions: [
+      "20% VAT",
+      "Food & beverages (including for the crew)",
+      "Airport transfers (available at extra charge)",
+      "Motorized water sports equipment",
+      "Göcek mooring and anchorage buoy fees",
+    ],
     currency: "EUR",
     available: true,
   },
@@ -115,7 +133,7 @@ Completely refitted in 2025, Holiday 5 features modern interiors, expansive deck
 Experience the ultimate blue cruise adventure aboard M/S Holiday 5, where generous space meets refined comfort along the stunning Turquoise Coast.`,
         shortDescription: "Flagship 31m motor-sailer with 10 cabins, perfect for large groups of up to 20 guests.",
       },
-      tr: {
+      fr: {
         description: `M/S Holiday 5, Holiday Yachts filosunun amiral gemisi olan etkileyici 31 metrelik bir motor yelkenlidir. 10 geniş kamarası (8 çift kişilik ve 2 twin) ile 20 misafire kadar ev sahipliği yaparak büyük gruplar, aile buluşmaları ve kurumsal etkinlikler için idealdir.
 
 2025 yılında tamamen yenilenmiş olan Holiday 5, modern iç mekanlar, çoklu yemek ve dinlenme alanlarına sahip geniş güverte alanları ve kano ve kürek tahtaları dahil kapsamlı su oyuncakları sunar. 4 kişilik profesyonel mürettebatı olağanüstü hizmet ve otantik Türk misafirperverliği sunar.
@@ -162,11 +180,29 @@ Erleben Sie das ultimative Blaue-Reise-Abenteuer an Bord der M/S Holiday 5, wo g
       { id: "h5-5", src: "/assets/images/yachts/holiday5/05.jpg", alt: "M/S Holiday 5 Bow View", category: "exterior" },
     ],
     thumbnail: "/assets/images/yachts/holiday5.jpg",
-    pricePerWeek: {
-      low: 18000,
-      mid: 24000,
-      high: 32000,
+    pricePerDay: {
+      aprilMay: 2250,
+      juneSeptember: 2750,
+      julyAugust: 3250,
+      october: 2250,
     },
+    minDays: 7,
+    inclusions: [
+      "Fuel",
+      "Boat rental, equipment, and crew",
+      "Clean bed linen, beach towels, and bath towels",
+      "Port taxes and permits",
+      "Turkish transit log",
+      "Fresh water",
+      "Boat insurance",
+    ],
+    exclusions: [
+      "20% VAT",
+      "Food & beverages (including for the crew)",
+      "Airport transfers (available at extra charge)",
+      "Motorized water sports equipment",
+      "Göcek mooring and anchorage buoy fees",
+    ],
     currency: "EUR",
     available: true,
   },
@@ -196,7 +232,7 @@ Built in 2019 with attention to every detail, Holiday 6 features contemporary in
 Discover the magic of the Turkish Riviera aboard M/S Holiday 6, where modern luxury meets timeless seafaring tradition.`,
         shortDescription: "Modern 24m gulet with 4 cabins, perfect for families and small groups of up to 8 guests.",
       },
-      tr: {
+      fr: {
         description: `M/S Holiday 6, konfor ve stil için tasarlanmış modern bir 24 metrelik gulettir. 4 iyi donatılmış kamarası ile 8 misafire kadar rahatça ev sahipliği yaparak premium bir yelken deneyimi arayan küçük gruplar ve aileler için mükemmeldir.
 
 2019 yılında her detaya dikkat edilerek inşa edilmiş olan Holiday 6, çağdaş iç mekanlar, verimli güverte düzeni ve son teknoloji navigasyon ekipmanları sunar. 3 kişilik özel mürettebatı kişiselleştirilmiş hizmet ve uzman yerel bilgi sağlar.
@@ -276,7 +312,7 @@ Holiday M stands out with her exceptional attention to detail, from handcrafted 
 Set sail on M/S Holiday M and discover why she has become a favorite among discerning travelers seeking the perfect balance of adventure and luxury.`,
         shortDescription: "Elegant 26m gulet with 4 cabins, recently renovated in 2024 for the ultimate comfort.",
       },
-      tr: {
+      fr: {
         description: `M/S Holiday M, geleneksel cazibe ile modern inceliği birleştiren zarif bir 26 metrelik gulettir. 2024 yılında yeni yenilenmiş olup, her biri konfor ve mahremiyet düşünülerek tasarlanmış 4 geniş kamarada 8 misafire kadar ev sahipliği yapar.
 
 Holiday M, el işi ahşap kaplamalardan premium yatak takımlarına ve tasarımcı banyo armatürlerine kadar detaylara olağanüstü dikkat ile öne çıkar. 3 kişilik profesyonel mürettebatı eşsiz bir kiralama deneyimi sunmaktan gurur duyar.

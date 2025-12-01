@@ -140,9 +140,9 @@ function BookingContent() {
                         <div>
                           <p className="text-sm text-slate-500">{t("common.from")}</p>
                           <p className="text-2xl font-bold text-amber-500">
-                            €{yacht.pricePerWeek.low.toLocaleString()}
+                            €{(yacht.pricePerDay?.aprilMay || yacht.pricePerWeek?.low || 0).toLocaleString()}
                             <span className="text-sm font-normal text-slate-500">
-                              {t("yacht.perWeek")}
+                              {yacht.pricePerDay ? t("yacht.perDayShort") : t("yacht.perWeek")}
                             </span>
                           </p>
                         </div>
@@ -205,9 +205,11 @@ function BookingContent() {
                     <div className="text-center">
                       <p className="text-sm text-slate-500">{t("common.from")}</p>
                       <p className="text-3xl font-bold text-amber-500">
-                        €{selectedYacht.pricePerWeek.low.toLocaleString()}
+                        €{(selectedYacht.pricePerDay?.aprilMay || selectedYacht.pricePerWeek?.low || 0).toLocaleString()}
                       </p>
-                      <p className="text-sm text-slate-500">{t("common.perWeek")}</p>
+                      <p className="text-sm text-slate-500">
+                        {selectedYacht.pricePerDay ? t("yacht.perDayShort") : t("common.perWeek")}
+                      </p>
                     </div>
                   </div>
                 </div>

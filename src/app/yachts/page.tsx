@@ -28,7 +28,8 @@ export default function YachtsPage() {
     return allYachts.filter((yacht) => {
       if (filters.guests && yacht.guests < filters.guests) return false;
       if (filters.minLength && yacht.length < filters.minLength) return false;
-      if (filters.maxPrice && yacht.pricePerWeek.low > filters.maxPrice) return false;
+      const yachtPrice = yacht.pricePerDay?.aprilMay || yacht.pricePerWeek?.low || 0;
+      if (filters.maxPrice && yachtPrice > filters.maxPrice) return false;
       return true;
     });
   }, [allYachts, filters]);

@@ -6,6 +6,13 @@ export interface YachtTranslation {
   shortDescription: string;
 }
 
+export interface SeasonalPricing {
+  aprilMay: number;      // April - May
+  juneSeptember: number; // June & September
+  julyAugust: number;    // July - August (peak)
+  october: number;       // October
+}
+
 export interface Yacht {
   id: string;
   slug: string;
@@ -25,11 +32,17 @@ export interface Yacht {
   amenities: string[];
   images: YachtImage[];
   thumbnail: string;
-  pricePerWeek: {
+  // Legacy weekly pricing (for yachts without daily pricing)
+  pricePerWeek?: {
     low: number;
     mid: number;
     high: number;
   };
+  // New daily pricing with seasonal rates
+  pricePerDay?: SeasonalPricing;
+  minDays?: number; // Minimum charter days
+  inclusions?: string[];
+  exclusions?: string[];
   currency: 'EUR' | 'USD' | 'TRY';
   available: boolean;
 }

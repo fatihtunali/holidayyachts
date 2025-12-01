@@ -67,7 +67,15 @@ export function BookingForm({
   // Calculate price
   const calculatePrice = () => {
     if (!dateRange?.from || !dateRange?.to) return null;
-    return calculateTotalPrice(yacht.pricePerWeek, dateRange.from, dateRange.to);
+    // Handle both daily and weekly pricing
+    if (yacht.pricePerDay) {
+      const days = Math.ceil((dateRange.to.getTime() - dateRange.from.getTime()) / (1000 * 60 * 60 * 24));
+      return yacht.pricePerDay.aprilMay * days; // Simple calculation using lowest rate
+    }
+    if (yacht.pricePerWeek) {
+      return calculateTotalPrice(yacht.pricePerWeek, dateRange.from, dateRange.to);
+    }
+    return null;
   };
 
   const totalPrice = calculatePrice();
