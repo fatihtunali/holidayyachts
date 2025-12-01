@@ -7,7 +7,7 @@ import Link from "next/link";
 import { BookingForm } from "@/components/booking/BookingForm";
 import { Button } from "@/components/ui/Button";
 import { getAllYachts, getYachtById } from "@/data/yachts";
-import type { Yacht, BookingRequest } from "@/types";
+import type { Yacht } from "@/types";
 import { Calendar, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -36,16 +36,6 @@ function BookingContent() {
     setStep("book");
     // Update URL
     window.history.pushState({}, "", `/booking?yacht=${yacht.id}`);
-  };
-
-  const handleBookingSubmit = async (booking: BookingRequest) => {
-    // In production, this would call the TravelQuoteBot API
-    console.log("Booking submitted:", booking);
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    // The BookingForm component handles the success state
   };
 
   // Mock blocked dates for demo
@@ -228,7 +218,6 @@ function BookingContent() {
                 <BookingForm
                   yacht={selectedYacht}
                   blockedDates={blockedDates}
-                  onSubmit={handleBookingSubmit}
                 />
               )}
             </>

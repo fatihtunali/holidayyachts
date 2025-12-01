@@ -6,6 +6,7 @@ import { cn, formatPrice } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import type { Yacht } from "@/types";
+import { getTranslatedYacht } from "@/data/yachts";
 import {
   Users,
   Bed,
@@ -14,6 +15,7 @@ import {
   ArrowRight,
   Anchor,
 } from "lucide-react";
+import { FavoriteButton } from "@/components/ui/FavoriteButton";
 
 interface YachtCardProps {
   yacht: Yacht;
@@ -26,7 +28,8 @@ export function YachtCard({
   variant = "default",
   className,
 }: YachtCardProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const translatedYacht = getTranslatedYacht(yacht, language);
 
   const features = [
     { icon: Ruler, labelKey: "yacht.length", value: `${yacht.length}m` },
@@ -89,11 +92,20 @@ export function YachtCard({
             {t("yachts.featured")}
           </div>
 
+          {/* Favorite Button */}
+          <FavoriteButton
+            id={yacht.id}
+            type="yacht"
+            variant="overlay"
+            size="md"
+            className="absolute top-4 right-4"
+          />
+
           {/* Title on image */}
           <div className="absolute bottom-0 left-0 right-0 p-6">
             <h3 className="text-2xl font-bold text-white mb-2">{yacht.name}</h3>
             <p className="text-white/80 text-sm line-clamp-2">
-              {yacht.shortDescription}
+              {translatedYacht.shortDescription}
             </p>
           </div>
         </div>
@@ -150,6 +162,15 @@ export function YachtCard({
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+        {/* Favorite Button */}
+        <FavoriteButton
+          id={yacht.id}
+          type="yacht"
+          variant="overlay"
+          size="sm"
+          className="absolute top-3 right-3"
+        />
 
         {/* Quick View Button */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

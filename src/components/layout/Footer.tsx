@@ -12,6 +12,7 @@ import {
   Award,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -20,6 +21,7 @@ export function Footer() {
     { nameKey: "nav.yachts", href: "/yachts" },
     { nameKey: "nav.itineraries", href: "/itineraries" },
     { nameKey: "nav.about", href: "/about" },
+    { name: "Blog", href: "/blog" },
     { nameKey: "nav.contact", href: "/contact" },
     { nameKey: "nav.booking", href: "/booking" },
   ];
@@ -40,6 +42,13 @@ export function Footer() {
 
   return (
     <footer className="bg-slate-900 text-white">
+      {/* Newsletter Section */}
+      <div className="border-b border-slate-800">
+        <div className="container mx-auto px-4 py-12">
+          <NewsletterSignup />
+        </div>
+      </div>
+
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -90,12 +99,12 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-6">{t("footer.quickLinks")}</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
-                <li key={link.nameKey}>
+                <li key={link.nameKey || link.name}>
                   <Link
                     href={link.href}
                     className="text-slate-400 hover:text-amber-400 transition-colors text-sm"
                   >
-                    {t(link.nameKey)}
+                    {link.name || t(link.nameKey!)}
                   </Link>
                 </li>
               ))}

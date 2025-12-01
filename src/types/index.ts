@@ -1,4 +1,11 @@
+import type { Language } from "@/contexts/LanguageContext";
+
 // Yacht Types
+export interface YachtTranslation {
+  description: string;
+  shortDescription: string;
+}
+
 export interface Yacht {
   id: string;
   slug: string;
@@ -13,6 +20,7 @@ export interface Yacht {
   renovated?: number;
   description: string;
   shortDescription: string;
+  translations?: Record<Language, YachtTranslation>;
   features: YachtFeature[];
   amenities: string[];
   images: YachtImage[];
@@ -24,6 +32,11 @@ export interface Yacht {
   };
   currency: 'EUR' | 'USD' | 'TRY';
   available: boolean;
+}
+
+export interface TranslatedYacht extends Omit<Yacht, 'translations'> {
+  description: string;
+  shortDescription: string;
 }
 
 export interface YachtFeature {

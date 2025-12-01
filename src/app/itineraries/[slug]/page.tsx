@@ -8,9 +8,9 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { YachtCard } from "@/components/yacht/YachtCard";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { getItineraryBySlug } from "@/data/itineraries";
+import { getItineraryBySlug, getTranslatedItinerary, TranslatedItinerary } from "@/data/itineraries";
 import { getYachtById } from "@/data/yachts";
-import type { Itinerary, Yacht } from "@/types";
+import type { Yacht } from "@/types";
 import {
   Anchor,
   Calendar,
@@ -19,9 +19,9 @@ import {
 } from "lucide-react";
 
 export default function ItineraryPage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const params = useParams();
-  const [itinerary, setItinerary] = useState<Itinerary | null>(null);
+  const [itinerary, setItinerary] = useState<TranslatedItinerary | null>(null);
   const [recommendedYachts, setRecommendedYachts] = useState<Yacht[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -29,14 +29,14 @@ export default function ItineraryPage() {
     const slug = params.slug as string;
     const itineraryData = getItineraryBySlug(slug);
     if (itineraryData) {
-      setItinerary(itineraryData);
+      setItinerary(getTranslatedItinerary(itineraryData, language));
       const yachts = itineraryData.recommendedYachts
         .map((id) => getYachtById(id))
         .filter((yacht): yacht is Yacht => yacht !== undefined);
       setRecommendedYachts(yachts);
     }
     setLoading(false);
-  }, [params.slug]);
+  }, [params.slug, language]);
 
   if (loading) {
     return (

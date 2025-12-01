@@ -1,32 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { getYachtBySlug } from "@/data/yachts";
+import { getYachtBySlug, getTranslatedYacht } from "@/data/yachts";
 import { formatPrice } from "@/lib/utils";
-import type { Yacht } from "@/types";
+import type { Yacht, TranslatedYacht } from "@/types";
 import {
   Bed,
   Calendar,
   Check,
   ChevronLeft,
+  ChevronRight,
   Mail,
   Phone,
   Ruler,
   Users,
   Wrench,
+  X,
 } from "lucide-react";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { SocialShare } from "@/components/ui/SocialShare";
+import { YachtSchema } from "@/components/seo/StructuredData";
 
 export default function YachtPage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const params = useParams();
   const [yacht, setYacht] = useState<Yacht | null>(null);
   const [loading, setLoading] = useState(true);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const slug = params.slug as string;
@@ -37,6 +44,48 @@ export default function YachtPage() {
     setLoading(false);
   }, [params.slug]);
 
+  const translatedYacht = useMemo(() => {
+    if (!yacht) return null;
+    return getTranslatedYacht(yacht, language);
+  }, [yacht, language]);
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+    document.body.style.overflow = "unset";
+  }, []);
+
+  const goToPrevious = useCallback(() => {
+    if (!yacht) return;
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? yacht.images.length - 1 : prev - 1
+    );
+  }, [yacht]);
+
+  const goToNext = useCallback(() => {
+    if (!yacht) return;
+    setCurrentImageIndex((prev) =>
+      prev === yacht.images.length - 1 ? 0 : prev + 1
+    );
+  }, [yacht]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lightboxOpen) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") goToPrevious();
+      if (e.key === "ArrowRight") goToNext();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen, closeLightbox, goToPrevious, goToNext]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -45,7 +94,7 @@ export default function YachtPage() {
     );
   }
 
-  if (!yacht) {
+  if (!yacht || !translatedYacht) {
     notFound();
   }
 
@@ -62,6 +111,19 @@ export default function YachtPage() {
 
   return (
     <>
+      {/* Yacht Schema for SEO */}
+      <YachtSchema
+        name={yacht.name}
+        description={translatedYacht.shortDescription}
+        image={`https://www.holidayyachts.com${yacht.thumbnail}`}
+        url={`https://www.holidayyachts.com/yachts/${yacht.slug}`}
+        priceFrom={yacht.pricePerWeek.low}
+        currency={yacht.currency}
+        guests={yacht.guests}
+        cabins={yacht.cabins}
+        length={yacht.length}
+      />
+
       {/* Hero Gallery */}
       <section className="relative h-[60vh] min-h-[500px]">
         <div className="absolute inset-0">
@@ -87,10 +149,25 @@ export default function YachtPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
               {yacht.name}
             </h1>
-            <p className="text-xl text-white/80">{yacht.shortDescription}</p>
+            <p className="text-xl text-white/80">{translatedYacht.shortDescription}</p>
           </div>
         </div>
       </section>
+
+      {/* Breadcrumb */}
+      <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+        <Breadcrumb
+          items={[
+            { label: "Yachts", href: "/yachts" },
+            { label: yacht.name },
+          ]}
+        />
+        <SocialShare
+          url={`https://www.holidayyachts.com/yachts/${yacht.slug}`}
+          title={`${yacht.name} - Luxury Gulet Charter`}
+          description={translatedYacht.shortDescription}
+        />
+      </div>
 
       {/* Quick Info Bar */}
       <section className="bg-slate-900 text-white py-6">
@@ -119,7 +196,7 @@ export default function YachtPage() {
                   {t("yachtDetail.about")} {yacht.name}
                 </h2>
                 <div className="prose prose-slate max-w-none">
-                  {yacht.description.split("\n\n").map((paragraph, index) => (
+                  {translatedYacht.description.split("\n\n").map((paragraph, index) => (
                     <p key={index} className="text-slate-600 mb-4">
                       {paragraph}
                     </p>
@@ -133,10 +210,11 @@ export default function YachtPage() {
                   {t("yachtDetail.photoGallery")}
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {yacht.images.map((image) => (
+                  {yacht.images.map((image, index) => (
                     <div
                       key={image.id}
                       className="relative aspect-[4/3] rounded-lg overflow-hidden group cursor-pointer"
+                      onClick={() => openLightbox(index)}
                     >
                       <Image
                         src={image.src}
@@ -144,6 +222,11 @@ export default function YachtPage() {
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                       />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                        <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                          Click to enlarge
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -258,6 +341,67 @@ export default function YachtPage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && yacht && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 text-white/80 hover:text-white p-2 z-10"
+            aria-label="Close"
+          >
+            <X className="h-8 w-8" />
+          </button>
+
+          {/* Previous Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrevious();
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2 z-10"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="h-10 w-10" />
+          </button>
+
+          {/* Image Container */}
+          <div
+            className="relative w-full h-full max-w-6xl max-h-[90vh] mx-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={yacht.images[currentImageIndex].src}
+              alt={yacht.images[currentImageIndex].alt}
+              fill
+              className="object-contain"
+              sizes="100vw"
+              priority
+            />
+          </div>
+
+          {/* Next Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2 z-10"
+            aria-label="Next image"
+          >
+            <ChevronRight className="h-10 w-10" />
+          </button>
+
+          {/* Image Counter */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm">
+            {currentImageIndex + 1} / {yacht.images.length}
+          </div>
+        </div>
+      )}
     </>
   );
 }

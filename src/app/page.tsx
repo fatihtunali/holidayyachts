@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { YachtCard } from "@/components/yacht/YachtCard";
 import { getAllYachts } from "@/data/yachts";
-import { getAllItineraries } from "@/data/itineraries";
+import { getAllItineraries, getTranslatedItinerary } from "@/data/itineraries";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Anchor,
@@ -21,11 +21,13 @@ import {
   Utensils,
   Waves,
 } from "lucide-react";
+import { FAQSection, homepageFAQs } from "@/components/seo/FAQSchema";
 
 export default function HomePage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const yachts = getAllYachts();
-  const itineraries = getAllItineraries();
+  const rawItineraries = getAllItineraries();
+  const itineraries = rawItineraries.map(it => getTranslatedItinerary(it, language));
 
   const features = [
     {
@@ -85,7 +87,7 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/assets/images/hero/py.jpg"
+            src="/assets/images/hero/holiday10-hero.jpg"
             alt="Luxury Gulet Sailing in Turkey"
             fill
             className="object-cover"
@@ -376,6 +378,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection faqs={homepageFAQs} />
 
       {/* Partners Section */}
       <section className="py-8 md:py-12 bg-white border-t">

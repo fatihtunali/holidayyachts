@@ -1,14 +1,41 @@
 "use client";
 
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import { YachtCard } from "@/components/yacht/YachtCard";
+import { YachtFilters } from "@/components/yacht/YachtFilters";
 import { getAllYachts } from "@/data/yachts";
-import { Anchor } from "lucide-react";
+import { Anchor, Ship } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+
+interface FilterState {
+  guests: number | null;
+  minLength: number | null;
+  maxPrice: number | null;
+}
 
 export default function YachtsPage() {
   const { t } = useLanguage();
-  const yachts = getAllYachts();
+  const allYachts = getAllYachts();
+
+  const [filters, setFilters] = useState<FilterState>({
+    guests: null,
+    minLength: null,
+    maxPrice: null,
+  });
+
+  const filteredYachts = useMemo(() => {
+    return allYachts.filter((yacht) => {
+      if (filters.guests && yacht.guests < filters.guests) return false;
+      if (filters.minLength && yacht.length < filters.minLength) return false;
+      if (filters.maxPrice && yacht.pricePerWeek.low > filters.maxPrice) return false;
+      return true;
+    });
+  }, [allYachts, filters]);
+
+  const hasActiveFilters = filters.guests !== null ||
+    filters.minLength !== null ||
+    filters.maxPrice !== null;
 
   const stats = [
     { value: "4", labelKey: "yachts.stats.gulets" },
@@ -65,7 +92,7 @@ export default function YachtsPage() {
       <section className="section-padding">
         <div className="container mx-auto px-4">
           {/* Stats Bar */}
-          <div className="flex flex-wrap justify-center gap-8 mb-12 p-6 bg-slate-50 rounded-xl">
+          <div className="flex flex-wrap justify-center gap-8 mb-8 p-6 bg-slate-50 rounded-xl">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <p className="text-2xl font-bold text-amber-500">{stat.value}</p>
@@ -74,25 +101,48 @@ export default function YachtsPage() {
             ))}
           </div>
 
-          {/* Featured Yacht */}
-          <div className="mb-12">
-            <h2 className="text-sm font-semibold text-amber-500 uppercase tracking-wider mb-4">
-              {t("yachts.featured")}
-            </h2>
-            <YachtCard yacht={yachts[0]} variant="featured" />
-          </div>
+          {/* Filters */}
+          <YachtFilters
+            onFilterChange={setFilters}
+            activeFilters={filters}
+          />
 
-          {/* All Yachts */}
-          <div>
-            <h2 className="text-sm font-semibold text-amber-500 uppercase tracking-wider mb-4">
-              {t("yachts.allYachts")}
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {yachts.slice(1).map((yacht) => (
-                <YachtCard key={yacht.id} yacht={yacht} />
-              ))}
+          {/* Yachts */}
+          {filteredYachts.length === 0 ? (
+            <div className="text-center py-16 bg-slate-50 rounded-xl">
+              <Ship className="h-16 w-16 text-slate-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-slate-700 mb-2">
+                {t("yachts.filters.noResults")}
+              </h3>
+              <p className="text-slate-500">
+                {t("yachts.filters.noResultsDesc")}
+              </p>
             </div>
-          </div>
+          ) : (
+            <>
+              {/* Featured Yacht (only show if not filtering) */}
+              {!hasActiveFilters && (
+                <div className="mb-12">
+                  <h2 className="text-sm font-semibold text-amber-500 uppercase tracking-wider mb-4">
+                    {t("yachts.featured")}
+                  </h2>
+                  <YachtCard yacht={filteredYachts[0]} variant="featured" />
+                </div>
+              )}
+
+              {/* All Yachts */}
+              <div>
+                <h2 className="text-sm font-semibold text-amber-500 uppercase tracking-wider mb-4">
+                  {t("yachts.allYachts")} ({filteredYachts.length})
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {(hasActiveFilters ? filteredYachts : filteredYachts.slice(1)).map((yacht) => (
+                    <YachtCard key={yacht.id} yacht={yacht} />
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </section>
 

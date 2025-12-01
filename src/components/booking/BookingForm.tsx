@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 import { DateRange } from "react-day-picker";
@@ -8,7 +8,8 @@ import { cn, formatPrice, calculateTotalPrice } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { AvailabilityCalendar } from "./AvailabilityCalendar";
 import { useLanguage } from "@/contexts/LanguageContext";
-import type { Yacht, BookingRequest, CustomerInfo } from "@/types";
+import { useToast } from "@/components/ui/Toast";
+import type { Yacht, CustomerInfo } from "@/types";
 import {
   User,
   Mail,
@@ -23,7 +24,6 @@ import {
 interface BookingFormProps {
   yacht: Yacht;
   blockedDates?: Date[];
-  onSubmit?: (booking: BookingRequest) => Promise<void>;
   className?: string;
 }
 
@@ -36,15 +36,19 @@ interface FormData extends CustomerInfo {
 export function BookingForm({
   yacht,
   blockedDates = [],
-  onSubmit,
   className,
 }: BookingFormProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const { showToast } = useToast();
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [dateRange, setDateRange] = useState<DateRange | undefined>();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  // Anti-spam: honeypot field and timestamp
+  const [honeypot, setHoneypot] = useState("");
+  const formLoadTime = useRef(Date.now());
 
   const {
     register,
@@ -74,32 +78,65 @@ export function BookingForm({
     setIsSubmitting(true);
     setSubmitError(null);
 
+    // Anti-spam checks
+    const timeElapsed = Date.now() - formLoadTime.current;
+    const MIN_SUBMIT_TIME = 5000; // 5 seconds minimum for booking form
+
+    // Check 1: Honeypot field should be empty
+    if (honeypot) {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setSubmitSuccess(true);
+      setStep(3);
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Check 2: Form submitted too quickly
+    if (timeElapsed < MIN_SUBMIT_TIME) {
+      showToast("Please take your time filling out the form.", "warning");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const booking: BookingRequest = {
-        yachtId: yacht.id,
-        yachtName: yacht.name,
-        startDate: format(dateRange.from, "yyyy-MM-dd"),
-        endDate: format(dateRange.to, "yyyy-MM-dd"),
-        guests: data.guests,
-        customerInfo: {
+      // Submit to API
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          yachtId: yacht.id,
+          yachtName: yacht.name,
+          startDate: format(dateRange.from, "yyyy-MM-dd"),
+          endDate: format(dateRange.to, "yyyy-MM-dd"),
           firstName: data.firstName,
           lastName: data.lastName,
           email: data.email,
           phone: data.phone,
           country: data.country,
-        },
-        specialRequests: data.specialRequests,
-        status: "pending",
-        totalPrice: totalPrice || undefined,
-        currency: yacht.currency,
-      };
+          guests: data.guests,
+          specialRequests: data.specialRequests,
+          totalPrice: totalPrice || undefined,
+          currency: yacht.currency,
+          language,
+        }),
+      });
 
-      await onSubmit?.(booking);
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Failed to submit booking");
+      }
+
       setSubmitSuccess(true);
       setStep(3);
+      showToast(t("bookingForm.requestSubmitted"), "success");
     } catch (error) {
       setSubmitError(
         error instanceof Error ? error.message : "Failed to submit booking"
+      );
+      showToast(
+        error instanceof Error ? error.message : "Failed to submit booking",
+        "error"
       );
     } finally {
       setIsSubmitting(false);
@@ -208,6 +245,20 @@ export function BookingForm({
       {/* Step 2: Customer Details */}
       {step === 2 && (
         <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
+          {/* Honeypot field - hidden from humans, visible to bots */}
+          <div className="absolute -left-[9999px]" aria-hidden="true">
+            <label htmlFor="company_url">Company URL</label>
+            <input
+              type="text"
+              id="company_url"
+              name="company_url"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           <div className="bg-white rounded-xl shadow-lg p-6">
             <h4 className="font-semibold text-slate-800 mb-6">{t("bookingForm.guestInfo")}</h4>
 

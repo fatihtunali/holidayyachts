@@ -15,19 +15,24 @@ import {
   Mail,
   ChevronDown,
   Anchor,
+  Heart,
 } from "lucide-react";
+import { useFavorites } from "@/contexts/FavoritesContext";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const { t } = useLanguage();
+  const { favoritesCount } = useFavorites();
 
   const navigation = [
     { name: t("nav.home"), href: "/" },
     { name: t("nav.yachts"), href: "/yachts" },
     { name: t("nav.itineraries"), href: "/itineraries" },
+    { name: t("nav.destinations"), href: "/destinations" },
     { name: t("nav.about"), href: "/about" },
+    { name: t("nav.blog"), href: "/blog" },
     { name: t("nav.contact"), href: "/contact" },
   ];
 
@@ -116,6 +121,25 @@ export function Header() {
 
             {/* CTA & Mobile Menu Button */}
             <div className="flex items-center gap-4">
+              {/* Favorites Button */}
+              <Link
+                href="/favorites"
+                className="relative p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                title={t("favorites.title")}
+              >
+                <Heart
+                  className={cn(
+                    "h-5 w-5 transition-colors",
+                    favoritesCount > 0 ? "text-red-500 fill-red-500" : "text-slate-600"
+                  )}
+                />
+                {favoritesCount > 0 && (
+                  <span className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    {favoritesCount > 9 ? "9+" : favoritesCount}
+                  </span>
+                )}
+              </Link>
+
               <div className="hidden sm:block lg:hidden">
                 <LanguageSwitcher />
               </div>
@@ -162,6 +186,26 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
+            {/* Favorites link in mobile */}
+            <Link
+              href="/favorites"
+              className={cn(
+                "flex items-center gap-3 py-3 text-base font-medium border-b border-slate-100",
+                pathname === "/favorites"
+                  ? "text-amber-500"
+                  : "text-slate-700 hover:text-amber-500"
+              )}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <Heart className={cn("h-5 w-5", favoritesCount > 0 && "fill-red-500 text-red-500")} />
+              {t("favorites.title")}
+              {favoritesCount > 0 && (
+                <span className="ml-auto px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full">
+                  {favoritesCount}
+                </span>
+              )}
+            </Link>
+
             <div className="pt-4 space-y-4">
               <div className="flex justify-center">
                 <LanguageSwitcher />

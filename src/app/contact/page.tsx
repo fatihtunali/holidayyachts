@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import {
@@ -15,25 +15,103 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useToast } from "@/components/ui/Toast";
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  yacht: string;
+  message: string;
+}
 
 export default function ContactPage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const { showToast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
-    null
-  );
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    yacht: "",
+    message: "",
+  });
+
+  // Anti-spam: honeypot field and timestamp
+  const [honeypot, setHoneypot] = useState("");
+  const formLoadTime = useRef(Date.now());
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Anti-spam checks
+    const timeElapsed = Date.now() - formLoadTime.current;
+    const MIN_SUBMIT_TIME = 3000; // 3 seconds minimum
 
-    // In production, you would send this to your API
-    setSubmitStatus("success");
-    setIsSubmitting(false);
+    // Check 1: Honeypot field should be empty (bots fill all fields)
+    if (honeypot) {
+      // Silently reject spam but show success to not alert bot
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setSubmitStatus("success");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Check 2: Form submitted too quickly (likely bot)
+    if (timeElapsed < MIN_SUBMIT_TIME) {
+      showToast("Please take your time filling out the form.", "warning");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Submit to API
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          language,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
+      setSubmitStatus("success");
+      showToast(t("contact.messageSent"), "success");
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        yacht: "",
+        message: "",
+      });
+    } catch (error) {
+      setSubmitStatus("error");
+      showToast(
+        error instanceof Error ? error.message : "Failed to send message",
+        "error"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -154,6 +232,20 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Honeypot field - hidden from humans, visible to bots */}
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-1">
@@ -163,6 +255,9 @@ export default function ContactPage() {
                         <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
                         <input
                           type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
                           required
                           className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
                           placeholder="John Doe"
@@ -177,6 +272,9 @@ export default function ContactPage() {
                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
                         <input
                           type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
                           required
                           className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
                           placeholder="john@example.com"
@@ -194,6 +292,9 @@ export default function ContactPage() {
                         <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
                         <input
                           type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
                           className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
                           placeholder="+1 234 567 8900"
                         />
@@ -204,6 +305,9 @@ export default function ContactPage() {
                         {t("contact.subject")} *
                       </label>
                       <select
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none appearance-none bg-white"
                       >
@@ -221,7 +325,12 @@ export default function ContactPage() {
                     <label className="block text-sm font-medium text-slate-700 mb-1">
                       {t("contact.interestedYacht")}
                     </label>
-                    <select className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none appearance-none bg-white">
+                    <select
+                      name="yacht"
+                      value={formData.yacht}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none appearance-none bg-white"
+                    >
                       <option value="">{t("contact.selectYacht")}</option>
                       <option value="holiday10">M/S Holiday 10</option>
                       <option value="holiday5">M/S Holiday 5</option>
@@ -237,6 +346,9 @@ export default function ContactPage() {
                     <div className="relative">
                       <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-slate-400" />
                       <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         required
                         rows={5}
                         className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none resize-none"

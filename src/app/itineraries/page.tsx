@@ -2,14 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { getAllItineraries } from "@/data/itineraries";
+import { getAllItineraries, getTranslatedItinerary } from "@/data/itineraries";
 import { Button } from "@/components/ui/Button";
 import { Clock, MapPin, Anchor, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ItinerariesPage() {
-  const { t } = useLanguage();
-  const itineraries = getAllItineraries();
+  const { t, language } = useLanguage();
+  const rawItineraries = getAllItineraries();
+  const itineraries = rawItineraries.map(it => getTranslatedItinerary(it, language));
 
   return (
     <>
