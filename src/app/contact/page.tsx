@@ -145,25 +145,30 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[40vh] min-h-[300px] flex items-center">
+      <section className="relative h-[60vh] min-h-[500px] flex items-center hero-mobile">
         <div className="absolute inset-0">
           <Image
-            src="/assets/images/hero/py.jpg"
+            src="/assets/images/hero/holiday10-hero.jpg"
             alt={t("contact.title")}
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-slate-900/70" />
+          <div className="hero-gradient absolute inset-0" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            {t("contact.title")}
-          </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            {t("contact.subtitle")}
-          </p>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <span className="inline-block px-4 py-2 bg-amber-500/90 text-white text-sm font-semibold rounded-full mb-6">
+              {t("contact.badge")}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              {t("contact.title")}
+            </h1>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl">
+              {t("contact.subtitle")}
+            </p>
+          </div>
         </div>
       </section>
 

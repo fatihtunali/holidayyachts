@@ -41,19 +41,29 @@ export default function FavoritesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[30vh] min-h-[200px] flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 to-slate-800" />
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/90 text-white text-sm font-semibold rounded-full mb-4">
-            <Heart className="h-4 w-4 fill-current" />
-            {favorites.length} {t("favorites.title")}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            {t("favorites.title")}
-          </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            {t("favorites.subtitle")}
-          </p>
+      <section className="relative h-[60vh] min-h-[500px] flex items-center hero-mobile">
+        <div className="absolute inset-0">
+          <Image
+            src="/assets/images/hero/holiday10-hero.jpg"
+            alt={t("favorites.title")}
+            fill
+            className="object-cover"
+          />
+          <div className="hero-gradient absolute inset-0" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/90 text-white text-sm font-semibold rounded-full mb-6">
+              <Heart className="h-4 w-4 fill-current" />
+              {favorites.length} {t("favorites.title")}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              {t("favorites.title")}
+            </h1>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl">
+              {t("favorites.subtitle")}
+            </p>
+          </div>
         </div>
       </section>
 

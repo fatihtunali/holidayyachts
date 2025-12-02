@@ -1,6 +1,76 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { sendBookingNotificationToAdmin, sendBookingConfirmationToCustomer } from "@/lib/email";
 import type { ApiResponse, BookingSubmission } from "@/types/database";
+
+// TravelQuoteBot API Configuration
+const TQB_API_URL = process.env.TQB_API_URL || "http://134.209.137.11:3004";
+const TQB_API_KEY = process.env.TQB_API_KEY || "myg_live_sk_7f8a9b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a";
+
+// Send booking to TravelQuoteBot
+async function sendToTravelQuoteBot(bookingData: {
+  yachtId: string;
+  yachtName: string;
+  startDate: string;
+  endDate: string;
+  nights: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  country: string;
+  guests: number;
+  specialRequests?: string;
+  totalPrice?: number;
+  currency: string;
+  ipAddress: string;
+  language: string;
+}): Promise<{ success: boolean; quoteId?: number; quoteNumber?: string; error?: string }> {
+  try {
+    const response = await fetch(`${TQB_API_URL}/api/external/yacht-quote`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-Key": TQB_API_KEY,
+      },
+      body: JSON.stringify({
+        yacht_slug: bookingData.yachtId,
+        yacht_name: bookingData.yachtName,
+        start_date: bookingData.startDate,
+        end_date: bookingData.endDate,
+        nights: bookingData.nights,
+        customer_name: `${bookingData.firstName} ${bookingData.lastName}`,
+        customer_email: bookingData.email,
+        customer_phone: bookingData.phone,
+        customer_country: bookingData.country,
+        guests: bookingData.guests,
+        special_requests: bookingData.specialRequests,
+        total_price: bookingData.totalPrice,
+        currency: bookingData.currency,
+        source_url: "https://holidaygulet.com",
+        ip_address: bookingData.ipAddress,
+        language: bookingData.language,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      console.log(`[TQB] Quote created: ${result.data.quote_number}`);
+      return {
+        success: true,
+        quoteId: result.data.quote_id,
+        quoteNumber: result.data.quote_number,
+      };
+    } else {
+      console.error("[TQB] Failed to create quote:", result.error);
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.error("[TQB] API error:", error);
+    return { success: false, error: "TravelQuoteBot API unavailable" };
+  }
+}
 
 // Validation helper
 function validateBookingData(data: Record<string, unknown>): { valid: boolean; errors: string[] } {
@@ -79,9 +149,10 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
     // Get metadata from request
     const ipAddress = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "unknown";
     const userAgent = request.headers.get("user-agent") || undefined;
+    const language = body.language || "en";
 
-    // Create submission
-    const submission = await db.createBookingSubmission({
+    // Prepare booking data
+    const bookingData = {
       yachtId: body.yachtId,
       yachtName: body.yachtName || body.yachtId,
       startDate: body.startDate,
@@ -96,38 +167,53 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       specialRequests: body.specialRequests?.trim() || undefined,
       totalPrice: body.totalPrice || undefined,
       currency: body.currency || "EUR",
-      status: "pending",
       ipAddress,
+      language,
+    };
+
+    // 1. Save to local MySQL database (backup)
+    const submission = await db.createBookingSubmission({
+      ...bookingData,
+      status: "pending",
       userAgent,
-      language: body.language || "en",
     });
 
-    // TODO: Send email notification to admin
-    // await sendEmailNotification({
-    //   to: "bookings@holidayyachts.com",
-    //   subject: `New Booking Request: ${body.yachtName}`,
-    //   body: `
-    //     New booking request received!
-    //
-    //     Guest: ${body.firstName} ${body.lastName}
-    //     Email: ${body.email}
-    //     Phone: ${body.phone}
-    //
-    //     Yacht: ${body.yachtName}
-    //     Dates: ${body.startDate} - ${body.endDate}
-    //     Guests: ${body.guests}
-    //
-    //     Special Requests: ${body.specialRequests || "None"}
-    //   `,
-    // });
+    // 2. Send to TravelQuoteBot for management
+    const tqbResult = await sendToTravelQuoteBot(bookingData);
+    if (tqbResult.success) {
+      console.log(`[API] Booking ${submission.id} synced to TQB as ${tqbResult.quoteNumber}`);
+    } else {
+      // Log error but don't fail the request - local save succeeded
+      console.error(`[API] Booking ${submission.id} failed to sync to TQB:`, tqbResult.error);
+    }
 
-    // TODO: Send confirmation email to guest
-    // await sendEmailNotification({
-    //   to: body.email,
-    //   subject: "Booking Request Received - Holiday Yacht",
-    //   template: "booking-confirmation",
-    //   data: submission,
-    // });
+    // Send email notifications (non-blocking)
+    sendBookingNotificationToAdmin({
+      firstName: bookingData.firstName,
+      lastName: bookingData.lastName,
+      email: bookingData.email,
+      phone: bookingData.phone,
+      yachtName: bookingData.yachtName,
+      startDate: bookingData.startDate,
+      endDate: bookingData.endDate,
+      guests: bookingData.guests,
+      specialRequests: bookingData.specialRequests,
+      totalPrice: bookingData.totalPrice,
+      currency: bookingData.currency,
+    }).catch(err => console.error("[API] Failed to send admin notification:", err));
+
+    sendBookingConfirmationToCustomer({
+      firstName: bookingData.firstName,
+      lastName: bookingData.lastName,
+      email: bookingData.email,
+      yachtName: bookingData.yachtName,
+      startDate: bookingData.startDate,
+      endDate: bookingData.endDate,
+      guests: bookingData.guests,
+      totalPrice: bookingData.totalPrice,
+      currency: bookingData.currency,
+      language: bookingData.language,
+    }).catch(err => console.error("[API] Failed to send customer confirmation:", err));
 
     return NextResponse.json(
       {

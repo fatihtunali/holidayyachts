@@ -66,29 +66,31 @@ function BookingContent() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[30vh] min-h-[250px] flex items-center">
+      <section className="relative h-[60vh] min-h-[500px] flex items-center hero-mobile">
         <div className="absolute inset-0">
           <Image
-            src="/assets/images/hero/py.jpg"
+            src="/assets/images/hero/holiday10-hero.jpg"
             alt={t("booking.title")}
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-slate-900/70" />
+          <div className="hero-gradient absolute inset-0" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/90 text-white text-sm font-semibold rounded-full mb-4">
-            <Calendar className="h-4 w-4" />
-            {t("nav.booking")}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            {t("booking.title")}
-          </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            {t("booking.subtitle")}
-          </p>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/90 text-white text-sm font-semibold rounded-full mb-6">
+              <Calendar className="h-4 w-4" />
+              {t("nav.booking")}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              {t("booking.title")}
+            </h1>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl">
+              {t("booking.subtitle")}
+            </p>
+          </div>
         </div>
       </section>
 
