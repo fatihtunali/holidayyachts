@@ -7,52 +7,57 @@ export const yachts: Yacht[] = [
     slug: "ms-holiday-10",
     name: "M/S Holiday 10",
     type: "gulet",
-    length: 32,
-    beam: 7.5,
-    cabins: 6,
-    guests: 12,
-    crew: 4,
-    year: 2018,
-    renovated: 2023,
-    description: `M/S Holiday 10 is a luxurious 32-meter gulet offering the perfect blend of traditional Turkish craftsmanship and modern comfort. With 6 elegantly appointed cabins, she comfortably accommodates up to 12 guests for an unforgettable blue cruise experience along the stunning Turkish coastline.
+    length: 39,
+    beam: 8.1,
+    cabins: 10,
+    guests: 22,
+    crew: 5,
+    year: 2005,
+    renovated: 2017,
+    engine: "2 x 460 Hp IVECO AIFO",
+    cruisingSpeed: "12 knots",
+    fuelCapacity: 5000,
+    waterCapacity: 10000,
+    generator: "2 x 42 KVA",
+    description: `M/S Holiday 10 is a magnificent 39-meter ketch-rigged gulet, the crown jewel of our fleet. With 10 elegantly appointed cabins (6 double, 2 twin, 2 triple), she comfortably accommodates up to 22 guests for an unforgettable blue cruise experience along the stunning Turkish coastline.
 
-Built in 2018 and renovated in 2023, Holiday 10 features spacious sun decks, a stylish saloon, and world-class amenities. Her experienced crew of 4 ensures impeccable service throughout your voyage, from gourmet Mediterranean cuisine to personalized excursions.
+Built in 2005 and renovated in 2017 with a partial renovation planned for 2025, Holiday 10 features spacious sun decks, a stylish saloon, and world-class amenities including satellite TV, ice machine, and air conditioning throughout. Her experienced crew of 5-6 ensures impeccable service throughout your voyage, from gourmet Mediterranean cuisine to personalized excursions.
 
-Whether you're seeking a romantic getaway, a family adventure, or an exclusive group charter, M/S Holiday 10 delivers an exceptional sailing experience with breathtaking views of the Aegean and Mediterranean seas.`,
-    shortDescription: "Luxury 32m gulet with 6 cabins, perfect for groups of up to 12 guests seeking the ultimate blue cruise experience.",
+Whether you're seeking a romantic getaway, a family reunion, or an exclusive group charter, M/S Holiday 10 delivers an exceptional sailing experience with breathtaking views of the Aegean and Mediterranean seas.`,
+    shortDescription: "Magnificent 39m gulet with 10 cabins, perfect for large groups of up to 22 guests seeking the ultimate blue cruise experience.",
     translations: {
       en: {
-        description: `M/S Holiday 10 is a luxurious 32-meter gulet offering the perfect blend of traditional Turkish craftsmanship and modern comfort. With 6 elegantly appointed cabins, she comfortably accommodates up to 12 guests for an unforgettable blue cruise experience along the stunning Turkish coastline.
+        description: `M/S Holiday 10 is a magnificent 39-meter ketch-rigged gulet, the crown jewel of our fleet. With 10 elegantly appointed cabins (6 double, 2 twin, 2 triple), she comfortably accommodates up to 22 guests for an unforgettable blue cruise experience along the stunning Turkish coastline.
 
-Built in 2018 and renovated in 2023, Holiday 10 features spacious sun decks, a stylish saloon, and world-class amenities. Her experienced crew of 4 ensures impeccable service throughout your voyage, from gourmet Mediterranean cuisine to personalized excursions.
+Built in 2005 and renovated in 2017 with a partial renovation planned for 2025, Holiday 10 features spacious sun decks, a stylish saloon, and world-class amenities including satellite TV, ice machine, and air conditioning throughout. Her experienced crew of 5-6 ensures impeccable service throughout your voyage, from gourmet Mediterranean cuisine to personalized excursions.
 
-Whether you're seeking a romantic getaway, a family adventure, or an exclusive group charter, M/S Holiday 10 delivers an exceptional sailing experience with breathtaking views of the Aegean and Mediterranean seas.`,
-        shortDescription: "Luxury 32m gulet with 6 cabins, perfect for groups of up to 12 guests seeking the ultimate blue cruise experience.",
+Whether you're seeking a romantic getaway, a family reunion, or an exclusive group charter, M/S Holiday 10 delivers an exceptional sailing experience with breathtaking views of the Aegean and Mediterranean seas.`,
+        shortDescription: "Magnificent 39m gulet with 10 cabins, perfect for large groups of up to 22 guests seeking the ultimate blue cruise experience.",
       },
       fr: {
-        description: `M/S Holiday 10, geleneksel Türk işçiliği ile modern konforu mükemmel bir şekilde harmanlayan lüks bir 32 metrelik gulettir. 6 zarif kamarası ile muhteşem Türkiye kıyıları boyunca unutulmaz bir mavi yolculuk deneyimi için 12 misafire kadar rahatça ev sahipliği yapar.
+        description: `Le M/S Holiday 10 est un magnifique gulet à gréement ketch de 39 mètres, le joyau de notre flotte. Avec 10 cabines élégamment aménagées (6 doubles, 2 twin, 2 triples), il accueille confortablement jusqu'à 22 passagers pour une expérience de croisière bleue inoubliable le long de la magnifique côte turque.
 
-2018 yılında inşa edilmiş ve 2023 yılında yenilenmiş olan Holiday 10, geniş güneşlenme güverteleri, şık bir salon ve dünya standartlarında olanaklar sunar. 4 kişilik deneyimli mürettebatı, gurme Akdeniz mutfağından kişiselleştirilmiş gezilere kadar yolculuğunuz boyunca kusursuz hizmet sağlar.
+Construit en 2005 et rénové en 2017 avec une rénovation partielle prévue pour 2025, Holiday 10 dispose de vastes ponts ensoleillés, d'un salon élégant et d'équipements de classe mondiale incluant TV satellite, machine à glace et climatisation dans tout le bateau. Son équipage expérimenté de 5-6 personnes assure un service impeccable tout au long de votre voyage, de la cuisine méditerranéenne gastronomique aux excursions personnalisées.
 
-İster romantik bir kaçamak, ister aile macerası, ister özel bir grup kiralama arıyor olun, M/S Holiday 10 Ege ve Akdeniz'in nefes kesici manzaraları eşliğinde olağanüstü bir yelken deneyimi sunar.`,
-        shortDescription: "6 kamaralı 32m lüks gulet, 12 kişiye kadar gruplar için mükemmel mavi yolculuk deneyimi.",
+Que vous recherchiez une escapade romantique, une réunion de famille ou une location de groupe exclusive, le M/S Holiday 10 offre une expérience de navigation exceptionnelle avec des vues à couper le souffle sur la mer Égée et la Méditerranée.`,
+        shortDescription: "Magnifique gulet de 39m avec 10 cabines, parfait pour les grands groupes jusqu'à 22 passagers.",
       },
       de: {
-        description: `Die M/S Holiday 10 ist eine luxuriöse 32-Meter-Gulet, die die perfekte Mischung aus traditioneller türkischer Handwerkskunst und modernem Komfort bietet. Mit 6 elegant eingerichteten Kabinen bietet sie bequem Platz für bis zu 12 Gäste für ein unvergessliches Blaue-Reise-Erlebnis entlang der atemberaubenden türkischen Küste.
+        description: `Die M/S Holiday 10 ist eine prächtige 39-Meter-Ketsch-getakelte Gulet, das Kronjuwel unserer Flotte. Mit 10 elegant eingerichteten Kabinen (6 Doppel-, 2 Twin-, 2 Dreibettkabinen) bietet sie bequem Platz für bis zu 22 Gäste für ein unvergessliches Blaue-Reise-Erlebnis entlang der atemberaubenden türkischen Küste.
 
-Die 2018 erbaute und 2023 renovierte Holiday 10 verfügt über geräumige Sonnendecks, einen stilvollen Salon und erstklassige Annehmlichkeiten. Ihre erfahrene 4-köpfige Crew sorgt für tadellosen Service während Ihrer gesamten Reise, von der mediterranen Gourmetküche bis hin zu personalisierten Ausflügen.
+2005 erbaut und 2017 renoviert mit einer Teilrenovierung für 2025 geplant, verfügt die Holiday 10 über geräumige Sonnendecks, einen stilvollen Salon und erstklassige Annehmlichkeiten wie Satelliten-TV, Eismaschine und durchgehende Klimaanlage. Ihre erfahrene 5-6-köpfige Crew sorgt für tadellosen Service während Ihrer gesamten Reise, von mediterraner Gourmetküche bis hin zu personalisierten Ausflügen.
 
-Ob Sie einen romantischen Urlaub, ein Familienabenteuer oder einen exklusiven Gruppencharter suchen - die M/S Holiday 10 bietet ein außergewöhnliches Segelerlebnis mit atemberaubenden Ausblicken auf die Ägäis und das Mittelmeer.`,
-        shortDescription: "Luxuriöse 32m Gulet mit 6 Kabinen, perfekt für Gruppen bis zu 12 Gäste für das ultimative Blaue-Reise-Erlebnis.",
+Ob Sie einen romantischen Urlaub, ein Familientreffen oder einen exklusiven Gruppencharter suchen - die M/S Holiday 10 bietet ein außergewöhnliches Segelerlebnis mit atemberaubenden Ausblicken auf die Ägäis und das Mittelmeer.`,
+        shortDescription: "Prächtige 39m Gulet mit 10 Kabinen, perfekt für große Gruppen bis zu 22 Gäste.",
       },
     },
     features: [
-      { icon: "ruler", label: "Length", value: "32m" },
-      { icon: "users", label: "Guests", value: "12" },
-      { icon: "bed", label: "Cabins", value: "6" },
-      { icon: "users-cog", label: "Crew", value: "4" },
-      { icon: "calendar", label: "Built", value: "2018" },
-      { icon: "wrench", label: "Renovated", value: "2023" },
+      { icon: "ruler", label: "Length", value: "39m" },
+      { icon: "users", label: "Guests", value: "22" },
+      { icon: "bed", label: "Cabins", value: "10" },
+      { icon: "users-cog", label: "Crew", value: "5-6" },
+      { icon: "calendar", label: "Built", value: "2005" },
+      { icon: "wrench", label: "Renovated", value: "2017" },
     ],
     amenities: [
       "Air Conditioning",
@@ -116,38 +121,43 @@ Ob Sie einen romantischen Urlaub, ein Familienabenteuer oder einen exklusiven Gr
     cabins: 10,
     guests: 20,
     crew: 4,
-    year: 2020,
+    year: 1995,
     renovated: 2025,
-    description: `M/S Holiday 5 is an impressive 31-meter motor-sailer, the flagship of the Holiday Yachts fleet. With 10 spacious cabins (8 double and 2 twin), she accommodates up to 20 guests, making her ideal for large groups, family reunions, and corporate events.
+    engine: "2 x 315 Hp Scania Diesel",
+    cruisingSpeed: "11 knots",
+    fuelCapacity: 6000,
+    waterCapacity: 9000,
+    generator: "42 KVA",
+    description: `M/S Holiday 5 is an impressive 31-meter motor-sailer with a rich heritage in the Holiday Yachts fleet. With 10 spacious cabins (8 double and 2 twin), she accommodates up to 20 guests, making her ideal for large groups, family reunions, and corporate events.
 
-Completely refitted in 2025, Holiday 5 features modern interiors, expansive deck areas with multiple dining and lounging spaces, and a comprehensive range of water toys including canoes and paddleboards. Her professional crew of 4 delivers exceptional service and authentic Turkish hospitality.
+Built in 1995, refurbished in 2015 and completely refitted in 2025, Holiday 5 features modern interiors, expansive deck areas with multiple dining and lounging spaces, and a comprehensive range of water toys including a Zodiac boat with 25 HP motor. Her professional crew of 4 delivers exceptional service and authentic Turkish hospitality.
 
 Experience the ultimate blue cruise adventure aboard M/S Holiday 5, where generous space meets refined comfort along the stunning Turquoise Coast.`,
-    shortDescription: "Flagship 31m motor-sailer with 10 cabins, perfect for large groups of up to 20 guests.",
+    shortDescription: "Classic 31m motor-sailer with 10 cabins, perfect for large groups of up to 20 guests.",
     translations: {
       en: {
-        description: `M/S Holiday 5 is an impressive 31-meter motor-sailer, the flagship of the Holiday Yachts fleet. With 10 spacious cabins (8 double and 2 twin), she accommodates up to 20 guests, making her ideal for large groups, family reunions, and corporate events.
+        description: `M/S Holiday 5 is an impressive 31-meter motor-sailer with a rich heritage in the Holiday Yachts fleet. With 10 spacious cabins (8 double and 2 twin), she accommodates up to 20 guests, making her ideal for large groups, family reunions, and corporate events.
 
-Completely refitted in 2025, Holiday 5 features modern interiors, expansive deck areas with multiple dining and lounging spaces, and a comprehensive range of water toys including canoes and paddleboards. Her professional crew of 4 delivers exceptional service and authentic Turkish hospitality.
+Built in 1995, refurbished in 2015 and completely refitted in 2025, Holiday 5 features modern interiors, expansive deck areas with multiple dining and lounging spaces, and a comprehensive range of water toys including a Zodiac boat with 25 HP motor. Her professional crew of 4 delivers exceptional service and authentic Turkish hospitality.
 
 Experience the ultimate blue cruise adventure aboard M/S Holiday 5, where generous space meets refined comfort along the stunning Turquoise Coast.`,
-        shortDescription: "Flagship 31m motor-sailer with 10 cabins, perfect for large groups of up to 20 guests.",
+        shortDescription: "Classic 31m motor-sailer with 10 cabins, perfect for large groups of up to 20 guests.",
       },
       fr: {
-        description: `M/S Holiday 5, Holiday Yachts filosunun amiral gemisi olan etkileyici 31 metrelik bir motor yelkenlidir. 10 geniş kamarası (8 çift kişilik ve 2 twin) ile 20 misafire kadar ev sahipliği yaparak büyük gruplar, aile buluşmaları ve kurumsal etkinlikler için idealdir.
+        description: `Le M/S Holiday 5 est un impressionnant voilier à moteur de 31 mètres avec un riche patrimoine dans la flotte Holiday Yachts. Avec 10 cabines spacieuses (8 doubles et 2 twin), il accueille jusqu'à 20 passagers, ce qui le rend idéal pour les grands groupes, les réunions de famille et les événements d'entreprise.
 
-2025 yılında tamamen yenilenmiş olan Holiday 5, modern iç mekanlar, çoklu yemek ve dinlenme alanlarına sahip geniş güverte alanları ve kano ve kürek tahtaları dahil kapsamlı su oyuncakları sunar. 4 kişilik profesyonel mürettebatı olağanüstü hizmet ve otantik Türk misafirperverliği sunar.
+Construit en 1995, rénové en 2015 et entièrement refait en 2025, Holiday 5 dispose d'intérieurs modernes, de vastes espaces de pont avec plusieurs zones de restauration et de détente, et d'une gamme complète de jouets nautiques incluant un Zodiac avec moteur 25 CV. Son équipage professionnel de 4 personnes offre un service exceptionnel et une hospitalité turque authentique.
 
-Cömert alanın zarif konforla buluştuğu muhteşem Turkuaz Kıyısı boyunca M/S Holiday 5'te nihai mavi yolculuk macerasını yaşayın.`,
-        shortDescription: "10 kamaralı 31m amiral gemi motor yelkenli, 20 kişiye kadar büyük gruplar için mükemmel.",
+Vivez l'aventure ultime de la croisière bleue à bord du M/S Holiday 5, où l'espace généreux rencontre le confort raffiné le long de la magnifique Côte Turquoise.`,
+        shortDescription: "Voilier à moteur classique de 31m avec 10 cabines, parfait pour les grands groupes jusqu'à 20 passagers.",
       },
       de: {
-        description: `Die M/S Holiday 5 ist ein beeindruckender 31-Meter-Motorsegler, das Flaggschiff der Holiday Yachts Flotte. Mit 10 geräumigen Kabinen (8 Doppel- und 2 Zweibettkabinen) bietet sie Platz für bis zu 20 Gäste und ist damit ideal für große Gruppen, Familientreffen und Firmenveranstaltungen.
+        description: `Die M/S Holiday 5 ist ein beeindruckender 31-Meter-Motorsegler mit reichem Erbe in der Holiday Yachts Flotte. Mit 10 geräumigen Kabinen (8 Doppel- und 2 Zweibettkabinen) bietet sie Platz für bis zu 20 Gäste und ist damit ideal für große Gruppen, Familientreffen und Firmenveranstaltungen.
 
-Die 2025 komplett renovierte Holiday 5 verfügt über moderne Innenräume, großzügige Deckbereiche mit mehreren Ess- und Loungebereichen sowie eine umfassende Auswahl an Wasserspielzeug einschließlich Kanus und Paddleboards. Ihre professionelle 4-köpfige Crew bietet außergewöhnlichen Service und authentische türkische Gastfreundschaft.
+1995 erbaut, 2015 renoviert und 2025 komplett überholt, verfügt die Holiday 5 über moderne Innenräume, großzügige Deckbereiche mit mehreren Ess- und Loungebereichen sowie eine umfassende Auswahl an Wasserspielzeug einschließlich eines Zodiac-Boots mit 25-PS-Motor. Ihre professionelle 4-köpfige Crew bietet außergewöhnlichen Service und authentische türkische Gastfreundschaft.
 
 Erleben Sie das ultimative Blaue-Reise-Abenteuer an Bord der M/S Holiday 5, wo großzügiger Raum auf raffinierten Komfort entlang der atemberaubenden Türkisküste trifft.`,
-        shortDescription: "Flaggschiff 31m Motorsegler mit 10 Kabinen, perfekt für große Gruppen bis zu 20 Gäste.",
+        shortDescription: "Klassischer 31m Motorsegler mit 10 Kabinen, perfekt für große Gruppen bis zu 20 Gäste.",
       },
     },
     features: [
@@ -155,7 +165,7 @@ Erleben Sie das ultimative Blaue-Reise-Abenteuer an Bord der M/S Holiday 5, wo g
       { icon: "users", label: "Guests", value: "20" },
       { icon: "bed", label: "Cabins", value: "10" },
       { icon: "users-cog", label: "Crew", value: "4" },
-      { icon: "calendar", label: "Built", value: "2020" },
+      { icon: "calendar", label: "Built", value: "1995" },
       { icon: "wrench", label: "Renovated", value: "2025" },
     ],
     amenities: [
@@ -290,68 +300,66 @@ Entdecken Sie die Magie der türkischen Riviera an Bord der M/S Holiday 6, wo mo
     slug: "ms-holiday-m",
     name: "M/S Holiday M",
     type: "gulet",
-    length: 26,
-    beam: 6.5,
-    cabins: 4,
-    guests: 8,
-    crew: 3,
-    year: 2017,
-    renovated: 2024,
-    description: `M/S Holiday M is an elegant 26-meter gulet that combines traditional charm with modern refinement. Recently renovated in 2024, she offers 4 spacious cabins for up to 8 guests, each designed with comfort and privacy in mind.
+    length: 15,
+    beam: 5,
+    cabins: 3,
+    guests: 12,
+    crew: 2,
+    year: 2011,
+    renovated: 2014,
+    description: `M/S Holiday M is a charming 15-meter gulet perfect for daily cruises and intimate group excursions. With 3 comfortable cabins and capacity for up to 12 guests, she offers an ideal way to explore the stunning Turkish coastline on day trips.
 
-Holiday M stands out with her exceptional attention to detail, from handcrafted wood finishes to premium bedding and designer bathroom fittings. Her professional crew of 3 takes pride in delivering an unparalleled charter experience.
+Built in 2011 and refurbished in 2014, Holiday M features air conditioning, a generator for comfort, and an inviting outdoor dining area with sun loungers for relaxation. Her dedicated crew of 2 ensures personalized service throughout your voyage.
 
-Set sail on M/S Holiday M and discover why she has become a favorite among discerning travelers seeking the perfect balance of adventure and luxury.`,
-    shortDescription: "Elegant 26m gulet with 4 cabins, recently renovated in 2024 for the ultimate comfort.",
+Experience the beauty of the Turquoise Coast aboard M/S Holiday M - perfect for daily adventures, special celebrations, or simply enjoying the crystal-clear waters of the Aegean and Mediterranean seas.`,
+    shortDescription: "Charming 15m gulet with 3 cabins, perfect for daily cruises with up to 12 guests.",
     translations: {
       en: {
-        description: `M/S Holiday M is an elegant 26-meter gulet that combines traditional charm with modern refinement. Recently renovated in 2024, she offers 4 spacious cabins for up to 8 guests, each designed with comfort and privacy in mind.
+        description: `M/S Holiday M is a charming 15-meter gulet perfect for daily cruises and intimate group excursions. With 3 comfortable cabins and capacity for up to 12 guests, she offers an ideal way to explore the stunning Turkish coastline on day trips.
 
-Holiday M stands out with her exceptional attention to detail, from handcrafted wood finishes to premium bedding and designer bathroom fittings. Her professional crew of 3 takes pride in delivering an unparalleled charter experience.
+Built in 2011 and refurbished in 2014, Holiday M features air conditioning, a generator for comfort, and an inviting outdoor dining area with sun loungers for relaxation. Her dedicated crew of 2 ensures personalized service throughout your voyage.
 
-Set sail on M/S Holiday M and discover why she has become a favorite among discerning travelers seeking the perfect balance of adventure and luxury.`,
-        shortDescription: "Elegant 26m gulet with 4 cabins, recently renovated in 2024 for the ultimate comfort.",
+Experience the beauty of the Turquoise Coast aboard M/S Holiday M - perfect for daily adventures, special celebrations, or simply enjoying the crystal-clear waters of the Aegean and Mediterranean seas.`,
+        shortDescription: "Charming 15m gulet with 3 cabins, perfect for daily cruises with up to 12 guests.",
       },
       fr: {
-        description: `M/S Holiday M, geleneksel cazibe ile modern inceliği birleştiren zarif bir 26 metrelik gulettir. 2024 yılında yeni yenilenmiş olup, her biri konfor ve mahremiyet düşünülerek tasarlanmış 4 geniş kamarada 8 misafire kadar ev sahipliği yapar.
+        description: `M/S Holiday M est un charmant gulet de 15 mètres parfait pour les croisières quotidiennes et les excursions en petit groupe. Avec 3 cabines confortables et une capacité de 12 passagers, il offre un moyen idéal d'explorer la magnifique côte turque lors d'excursions à la journée.
 
-Holiday M, el işi ahşap kaplamalardan premium yatak takımlarına ve tasarımcı banyo armatürlerine kadar detaylara olağanüstü dikkat ile öne çıkar. 3 kişilik profesyonel mürettebatı eşsiz bir kiralama deneyimi sunmaktan gurur duyar.
+Construit en 2011 et rénové en 2014, Holiday M dispose de la climatisation, d'un générateur pour le confort, et d'un espace repas extérieur accueillant avec des chaises longues pour la détente. Son équipage dévoué de 2 personnes assure un service personnalisé tout au long de votre voyage.
 
-M/S Holiday M ile yelken açın ve macera ile lüksün mükemmel dengesini arayan seçici gezginler arasında neden favori olduğunu keşfedin.`,
-        shortDescription: "4 kamaralı zarif 26m gulet, nihai konfor için 2024 yılında yeni yenilenmiş.",
+Découvrez la beauté de la Côte Turquoise à bord du M/S Holiday M - parfait pour les aventures quotidiennes, les célébrations spéciales, ou simplement profiter des eaux cristallines de la mer Égée et de la Méditerranée.`,
+        shortDescription: "Charmant gulet de 15m avec 3 cabines, parfait pour les croisières quotidiennes jusqu'à 12 passagers.",
       },
       de: {
-        description: `Die M/S Holiday M ist eine elegante 26-Meter-Gulet, die traditionellen Charme mit moderner Raffinesse verbindet. Kürzlich 2024 renoviert, bietet sie 4 geräumige Kabinen für bis zu 8 Gäste, jede mit Komfort und Privatsphäre im Sinn gestaltet.
+        description: `Die M/S Holiday M ist eine charmante 15-Meter-Gulet, perfekt für Tageskreuzfahrten und intime Gruppenausflüge. Mit 3 komfortablen Kabinen und einer Kapazität von bis zu 12 Gästen bietet sie eine ideale Möglichkeit, die atemberaubende türkische Küste bei Tagesausflügen zu erkunden.
 
-Die Holiday M besticht durch ihre außergewöhnliche Liebe zum Detail, von handgefertigten Holzoberflächen über Premium-Bettwäsche bis hin zu Designer-Badezimmerarmaturen. Ihre professionelle 3-köpfige Crew ist stolz darauf, ein unvergleichliches Charter-Erlebnis zu bieten.
+2011 erbaut und 2014 renoviert, verfügt die Holiday M über Klimaanlage, einen Generator für Komfort und einen einladenden Außenessbereich mit Sonnenliegen zur Entspannung. Ihre engagierte 2-köpfige Crew sorgt für persönlichen Service während Ihrer gesamten Reise.
 
-Setzen Sie die Segel auf der M/S Holiday M und entdecken Sie, warum sie zum Favoriten unter anspruchsvollen Reisenden geworden ist, die die perfekte Balance zwischen Abenteuer und Luxus suchen.`,
-        shortDescription: "Elegante 26m Gulet mit 4 Kabinen, kürzlich 2024 renoviert für ultimativen Komfort.",
+Erleben Sie die Schönheit der Türkisküste an Bord der M/S Holiday M - perfekt für tägliche Abenteuer, besondere Feiern oder einfach um das kristallklare Wasser der Ägäis und des Mittelmeers zu genießen.`,
+        shortDescription: "Charmante 15m Gulet mit 3 Kabinen, perfekt für Tageskreuzfahrten mit bis zu 12 Gästen.",
       },
     },
     features: [
-      { icon: "ruler", label: "Length", value: "26m" },
-      { icon: "users", label: "Guests", value: "8" },
-      { icon: "bed", label: "Cabins", value: "4" },
-      { icon: "users-cog", label: "Crew", value: "3" },
-      { icon: "calendar", label: "Built", value: "2017" },
-      { icon: "wrench", label: "Renovated", value: "2024" },
+      { icon: "ruler", label: "Length", value: "15m" },
+      { icon: "users", label: "Guests", value: "12" },
+      { icon: "bed", label: "Cabins", value: "3" },
+      { icon: "users-cog", label: "Crew", value: "2" },
+      { icon: "calendar", label: "Built", value: "2011" },
+      { icon: "wrench", label: "Renovated", value: "2014" },
     ],
     amenities: [
       "Air Conditioning",
       "Generator",
-      "WiFi",
-      "Smart TV",
-      "Premium Sound System",
-      "Water Maker",
-      "Snorkeling Equipment",
+      "Outdoor Dining Area",
+      "Sun Loungers",
+      "Shower",
+      "2 Toilets",
       "Fishing Equipment",
-      "Kayak",
-      "SUP Board",
-      "Sun Mattresses",
+      "Zodiac Boat",
+      "Snorkeling Equipment",
       "Deck Shower",
-      "BBQ",
-      "Espresso Machine",
+      "Music System",
+      "Freezer & Refrigerator",
     ],
     images: [
       { id: "hm-1", src: "/assets/images/yachts/holidayM/01.webp", alt: "M/S Holiday M Exterior", category: "exterior" },
@@ -362,11 +370,26 @@ Setzen Sie die Segel auf der M/S Holiday M und entdecken Sie, warum sie zum Favo
       { id: "hm-6", src: "/assets/images/yachts/holidayM/09.jpg", alt: "M/S Holiday M Saloon", category: "interior" },
     ],
     thumbnail: "/assets/images/yachts/holidayM/01.webp",
-    pricePerWeek: {
-      low: 10000,
-      mid: 13000,
-      high: 17000,
+    pricePerDay: {
+      aprilMay: 800,
+      juneSeptember: 1000,
+      julyAugust: 1200,
+      october: 800,
     },
+    minDays: 1,
+    inclusions: [
+      "Fuel",
+      "Boat rental, equipment, and crew",
+      "Clean towels",
+      "Port taxes and permits",
+      "Fresh water",
+      "Boat insurance",
+    ],
+    exclusions: [
+      "20% VAT",
+      "Food & beverages",
+      "Airport transfers (available at extra charge)",
+    ],
     currency: "EUR",
     available: true,
   },

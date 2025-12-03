@@ -25,6 +25,12 @@ export interface Yacht {
   crew: number;
   year: number;
   renovated?: number;
+  // Technical specifications
+  engine?: string;
+  cruisingSpeed?: string;
+  fuelCapacity?: number; // liters
+  waterCapacity?: number; // liters
+  generator?: string;
   description: string;
   shortDescription: string;
   translations?: Record<Language, YachtTranslation>;
