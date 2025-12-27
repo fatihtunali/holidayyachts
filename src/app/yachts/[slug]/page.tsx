@@ -254,153 +254,182 @@ export default function YachtPage() {
             {/* Right Column - Booking Card */}
             <div className="lg:col-span-1">
               <div className="sticky top-24 bg-white rounded-xl shadow-xl p-6 border">
-                <div className="text-center mb-6">
-                  <p className="text-slate-500 text-sm">{t("yachtDetail.startingFrom")}</p>
-                  <p className="text-4xl font-bold text-slate-800">
-                    {formatPrice(yacht.pricePerDay?.aprilMay || yacht.pricePerWeek?.low || 0, yacht.currency)}
-                  </p>
-                  <p className="text-slate-500">
-                    {yacht.pricePerDay ? t("yachtDetail.perDay") : t("yachtDetail.perWeek")}
-                  </p>
-                  {yacht.minDays && (
-                    <p className="text-sm text-amber-600 font-medium mt-1">
-                      {t("yachtDetail.minDays").replace("{days}", String(yacht.minDays))}
+                {yacht.fullyBooked ? (
+                  /* Fully Booked State - No pricing or booking */
+                  <div className="text-center py-4">
+                    <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Calendar className="h-8 w-8 text-amber-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-slate-800 mb-2">
+                      {t("yachtDetail.fullyBooked") || "Fully Booked"}
+                    </h3>
+                    <p className="text-slate-600 mb-6">
+                      {t("yachtDetail.fullyBookedMessage") || "This yacht is fully booked for the 2025 season."}
                     </p>
-                  )}
-                </div>
-
-                {/* Season Prices */}
-                <div className="space-y-3 mb-6">
-                  {yacht.pricePerDay ? (
-                    <>
-                      <div className="flex justify-between p-3 bg-green-50 rounded-lg">
-                        <span className="text-slate-600">{t("yacht.aprilMay")}</span>
-                        <span className="font-semibold text-green-700">
-                          {formatPrice(yacht.pricePerDay.aprilMay, yacht.currency)}{t("yacht.perDayShort")}
-                        </span>
-                      </div>
-                      <div className="flex justify-between p-3 bg-amber-50 rounded-lg">
-                        <span className="text-slate-600">{t("yacht.juneSeptember")}</span>
-                        <span className="font-semibold text-amber-700">
-                          {formatPrice(yacht.pricePerDay.juneSeptember, yacht.currency)}{t("yacht.perDayShort")}
-                        </span>
-                      </div>
-                      <div className="flex justify-between p-3 bg-red-50 rounded-lg">
-                        <span className="text-slate-600">{t("yacht.julyAugust")}</span>
-                        <span className="font-semibold text-red-700">
-                          {formatPrice(yacht.pricePerDay.julyAugust, yacht.currency)}{t("yacht.perDayShort")}
-                        </span>
-                      </div>
-                      <div className="flex justify-between p-3 bg-green-50 rounded-lg">
-                        <span className="text-slate-600">{t("yacht.october")}</span>
-                        <span className="font-semibold text-green-700">
-                          {formatPrice(yacht.pricePerDay.october, yacht.currency)}{t("yacht.perDayShort")}
-                        </span>
-                      </div>
-                    </>
-                  ) : yacht.pricePerWeek ? (
-                    <>
-                      <div className="flex justify-between p-3 bg-green-50 rounded-lg">
-                        <span className="text-slate-600">{t("yacht.lowSeason")}</span>
-                        <span className="font-semibold text-green-700">
-                          {formatPrice(yacht.pricePerWeek.low, yacht.currency)}
-                        </span>
-                      </div>
-                      <div className="flex justify-between p-3 bg-amber-50 rounded-lg">
-                        <span className="text-slate-600">{t("yacht.midSeason")}</span>
-                        <span className="font-semibold text-amber-700">
-                          {formatPrice(yacht.pricePerWeek.mid, yacht.currency)}
-                        </span>
-                      </div>
-                      <div className="flex justify-between p-3 bg-red-50 rounded-lg">
-                        <span className="text-slate-600">{t("yacht.highSeason")}</span>
-                        <span className="font-semibold text-red-700">
-                          {formatPrice(yacht.pricePerWeek.high, yacht.currency)}
-                        </span>
-                      </div>
-                    </>
-                  ) : null}
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="space-y-3">
-                  <Link href={`/booking?yacht=${yacht.id}`} className="block">
-                    <Button variant="primary" size="lg" className="w-full">
-                      <Calendar className="h-5 w-5 mr-2" />
-                      {t("itineraries.checkAvailability")}
-                    </Button>
-                  </Link>
-
-                  <a href="tel:+902526144757" className="block">
-                    <Button variant="outline" size="lg" className="w-full">
-                      <Phone className="h-5 w-5 mr-2" />
-                      {t("yachtDetail.callForQuote")}
-                    </Button>
-                  </a>
-
-                  <Link href="/contact" className="block">
-                    <Button variant="ghost" size="lg" className="w-full">
-                      <Mail className="h-5 w-5 mr-2" />
-                      {t("yachtDetail.sendInquiry")}
-                    </Button>
-                  </Link>
-                </div>
-
-                {/* Includes */}
-                <div className="mt-6 pt-6 border-t">
-                  <p className="font-semibold text-slate-800 mb-3">
-                    {t("yachtDetail.charterIncludes")}
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    {yacht.inclusions ? (
-                      yacht.inclusions.map((item, index) => (
-                        <li key={index} className="flex items-center gap-2">
-                          <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))
-                    ) : (
-                      <>
-                        <li className="flex items-center gap-2">
-                          <Check className="h-4 w-4 text-green-500" />
-                          {t("yachtDetail.professionalCrew")}
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <Check className="h-4 w-4 text-green-500" />
-                          {t("yachtDetail.fullBoardMeals")}
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <Check className="h-4 w-4 text-green-500" />
-                          {t("yachtDetail.fuelCruising")}
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <Check className="h-4 w-4 text-green-500" />
-                          {t("yachtDetail.waterSports")}
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <Check className="h-4 w-4 text-green-500" />
-                          {t("yachtDetail.portFees")}
-                        </li>
-                      </>
-                    )}
-                  </ul>
-                </div>
-
-                {/* Exclusions */}
-                {yacht.exclusions && yacht.exclusions.length > 0 && (
-                  <div className="mt-4 pt-4 border-t">
-                    <p className="font-semibold text-slate-800 mb-3">
-                      {t("yachtDetail.notIncluded")}
-                    </p>
-                    <ul className="space-y-2 text-sm text-slate-600">
-                      {yacht.exclusions.map((item, index) => (
-                        <li key={index} className="flex items-center gap-2">
-                          <X className="h-4 w-4 text-red-400 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                    <Link href="/yachts" className="block">
+                      <Button variant="primary" size="lg" className="w-full">
+                        {t("yachtDetail.viewOtherYachts") || "View Other Yachts"}
+                      </Button>
+                    </Link>
+                    <Link href="/contact" className="block mt-3">
+                      <Button variant="outline" size="lg" className="w-full">
+                        <Mail className="h-5 w-5 mr-2" />
+                        {t("yachtDetail.contactForNextSeason") || "Contact for Next Season"}
+                      </Button>
+                    </Link>
                   </div>
+                ) : (
+                  /* Normal Pricing and Booking */
+                  <>
+                    <div className="text-center mb-6">
+                      <p className="text-slate-500 text-sm">{t("yachtDetail.startingFrom")}</p>
+                      <p className="text-4xl font-bold text-slate-800">
+                        {formatPrice(yacht.pricePerDay?.aprilMay || yacht.pricePerWeek?.low || 0, yacht.currency)}
+                      </p>
+                      <p className="text-slate-500">
+                        {yacht.pricePerDay ? t("yachtDetail.perDay") : t("yachtDetail.perWeek")}
+                      </p>
+                      {yacht.minDays && (
+                        <p className="text-sm text-amber-600 font-medium mt-1">
+                          {t("yachtDetail.minDays").replace("{days}", String(yacht.minDays))}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Season Prices */}
+                    <div className="space-y-3 mb-6">
+                      {yacht.pricePerDay ? (
+                        <>
+                          <div className="flex justify-between p-3 bg-green-50 rounded-lg">
+                            <span className="text-slate-600">{t("yacht.aprilMay")}</span>
+                            <span className="font-semibold text-green-700">
+                              {formatPrice(yacht.pricePerDay.aprilMay, yacht.currency)}{t("yacht.perDayShort")}
+                            </span>
+                          </div>
+                          <div className="flex justify-between p-3 bg-amber-50 rounded-lg">
+                            <span className="text-slate-600">{t("yacht.juneSeptember")}</span>
+                            <span className="font-semibold text-amber-700">
+                              {formatPrice(yacht.pricePerDay.juneSeptember, yacht.currency)}{t("yacht.perDayShort")}
+                            </span>
+                          </div>
+                          <div className="flex justify-between p-3 bg-red-50 rounded-lg">
+                            <span className="text-slate-600">{t("yacht.julyAugust")}</span>
+                            <span className="font-semibold text-red-700">
+                              {formatPrice(yacht.pricePerDay.julyAugust, yacht.currency)}{t("yacht.perDayShort")}
+                            </span>
+                          </div>
+                          <div className="flex justify-between p-3 bg-green-50 rounded-lg">
+                            <span className="text-slate-600">{t("yacht.october")}</span>
+                            <span className="font-semibold text-green-700">
+                              {formatPrice(yacht.pricePerDay.october, yacht.currency)}{t("yacht.perDayShort")}
+                            </span>
+                          </div>
+                        </>
+                      ) : yacht.pricePerWeek ? (
+                        <>
+                          <div className="flex justify-between p-3 bg-green-50 rounded-lg">
+                            <span className="text-slate-600">{t("yacht.lowSeason")}</span>
+                            <span className="font-semibold text-green-700">
+                              {formatPrice(yacht.pricePerWeek.low, yacht.currency)}
+                            </span>
+                          </div>
+                          <div className="flex justify-between p-3 bg-amber-50 rounded-lg">
+                            <span className="text-slate-600">{t("yacht.midSeason")}</span>
+                            <span className="font-semibold text-amber-700">
+                              {formatPrice(yacht.pricePerWeek.mid, yacht.currency)}
+                            </span>
+                          </div>
+                          <div className="flex justify-between p-3 bg-red-50 rounded-lg">
+                            <span className="text-slate-600">{t("yacht.highSeason")}</span>
+                            <span className="font-semibold text-red-700">
+                              {formatPrice(yacht.pricePerWeek.high, yacht.currency)}
+                            </span>
+                          </div>
+                        </>
+                      ) : null}
+                    </div>
+
+                    {/* CTA Buttons */}
+                    <div className="space-y-3">
+                      <Link href={`/booking?yacht=${yacht.id}`} className="block">
+                        <Button variant="primary" size="lg" className="w-full">
+                          <Calendar className="h-5 w-5 mr-2" />
+                          {t("itineraries.checkAvailability")}
+                        </Button>
+                      </Link>
+
+                      <a href="tel:+902526144757" className="block">
+                        <Button variant="outline" size="lg" className="w-full">
+                          <Phone className="h-5 w-5 mr-2" />
+                          {t("yachtDetail.callForQuote")}
+                        </Button>
+                      </a>
+
+                      <Link href="/contact" className="block">
+                        <Button variant="ghost" size="lg" className="w-full">
+                          <Mail className="h-5 w-5 mr-2" />
+                          {t("yachtDetail.sendInquiry")}
+                        </Button>
+                      </Link>
+                    </div>
+
+                    {/* Includes */}
+                    <div className="mt-6 pt-6 border-t">
+                      <p className="font-semibold text-slate-800 mb-3">
+                        {t("yachtDetail.charterIncludes")}
+                      </p>
+                      <ul className="space-y-2 text-sm text-slate-600">
+                        {yacht.inclusions ? (
+                          yacht.inclusions.map((item, index) => (
+                            <li key={index} className="flex items-center gap-2">
+                              <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
+                              {item}
+                            </li>
+                          ))
+                        ) : (
+                          <>
+                            <li className="flex items-center gap-2">
+                              <Check className="h-4 w-4 text-green-500" />
+                              {t("yachtDetail.professionalCrew")}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <Check className="h-4 w-4 text-green-500" />
+                              {t("yachtDetail.fullBoardMeals")}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <Check className="h-4 w-4 text-green-500" />
+                              {t("yachtDetail.fuelCruising")}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <Check className="h-4 w-4 text-green-500" />
+                              {t("yachtDetail.waterSports")}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <Check className="h-4 w-4 text-green-500" />
+                              {t("yachtDetail.portFees")}
+                            </li>
+                          </>
+                        )}
+                      </ul>
+                    </div>
+
+                    {/* Exclusions */}
+                    {yacht.exclusions && yacht.exclusions.length > 0 && (
+                      <div className="mt-4 pt-4 border-t">
+                        <p className="font-semibold text-slate-800 mb-3">
+                          {t("yachtDetail.notIncluded")}
+                        </p>
+                        <ul className="space-y-2 text-sm text-slate-600">
+                          {yacht.exclusions.map((item, index) => (
+                            <li key={index} className="flex items-center gap-2">
+                              <X className="h-4 w-4 text-red-400 flex-shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             </div>
