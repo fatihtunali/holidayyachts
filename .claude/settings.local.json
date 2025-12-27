@@ -10,7 +10,8 @@
       "Bash(npm run build:*)",
       "Bash(npm install:*)",
       "Bash(git add:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nChange email addresses from holidayyachts.com to holidaygulet.com\n\nUpdated email addresses across:\n- Header and Footer components\n- Contact page\n- Privacy policy\n- Terms & conditions\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }

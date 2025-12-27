@@ -189,7 +189,7 @@ export default function TermsPage() {
 **Holiday Yacht Charter**
 Operated by: Light Tours
 Address: Fethiye Marina, Muğla, Turkey
-Email: info@holidayyachts.com
+Email: info@holidaygulet.com
 Phone: +90 252 614 47 57
 TURSAB License: A-1234
 
@@ -378,7 +378,7 @@ Office Hours: Monday - Saturday, 09:00 - 18:00 (Turkey Time)`
 **Holiday Yacht Charter**
 İşleten: Light Tours
 Adres: Fethiye Marina, Muğla, Türkiye
-E-posta: info@holidayyachts.com
+E-posta: info@holidaygulet.com
 Telefon: +90 252 614 47 57
 TURSAB Lisansı: A-1234
 
@@ -567,7 +567,7 @@ TURSAB Lisansı: A-1234
 **Holiday Yacht Charter**
 Betrieben von: Light Tours
 Adresse: Fethiye Marina, Muğla, Türkei
-E-Mail: info@holidayyachts.com
+E-Mail: info@holidaygulet.com
 Telefon: +90 252 614 47 57
 TURSAB-Lizenz: A-1234
 
@@ -644,11 +644,11 @@ Geschäftszeiten: Montag - Samstag, 09:00 - 18:00 (Türkei-Zeit)`
               </h3>
               <div className="flex flex-wrap gap-6">
                 <a
-                  href="mailto:info@holidayyachts.com"
+                  href="mailto:info@holidaygulet.com"
                   className="flex items-center gap-2 text-amber-600 hover:text-amber-700"
                 >
                   <Mail className="h-5 w-5" />
-                  info@holidayyachts.com
+                  info@holidaygulet.com
                 </a>
                 <a
                   href="tel:+902526144757"

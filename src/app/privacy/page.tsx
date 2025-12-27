@@ -110,10 +110,10 @@ You can control cookies through your browser settings. Note that disabling cooki
 
 **Holiday Yacht Charter**
 Address: Fethiye Marina, Muğla, Turkey
-Email: info@holidayyachts.com
+Email: info@holidaygulet.com
 Phone: +90 252 614 47 57
 
-For data protection inquiries, you may also contact our Data Protection Officer at privacy@holidayyachts.com.`
+For data protection inquiries, you may also contact our Data Protection Officer at privacy@holidaygulet.com.`
         }
       ]
     },
@@ -219,10 +219,10 @@ Bu hakları kullanmak için lütfen aşağıdaki iletişim bilgilerini kullanara
 
 **Holiday Yacht Charter**
 Adres: Fethiye Marina, Muğla, Türkiye
-E-posta: info@holidayyachts.com
+E-posta: info@holidaygulet.com
 Telefon: +90 252 614 47 57
 
-Veri koruma sorularınız için Veri Koruma Görevlimize privacy@holidayyachts.com adresinden de ulaşabilirsiniz.`
+Veri koruma sorularınız için Veri Koruma Görevlimize privacy@holidaygulet.com adresinden de ulaşabilirsiniz.`
         }
       ]
     },
@@ -328,10 +328,10 @@ Sie können Cookies über Ihre Browsereinstellungen steuern. Beachten Sie, dass 
 
 **Holiday Yacht Charter**
 Adresse: Fethiye Marina, Muğla, Türkei
-E-Mail: info@holidayyachts.com
+E-Mail: info@holidaygulet.com
 Telefon: +90 252 614 47 57
 
-Für Datenschutzanfragen können Sie auch unseren Datenschutzbeauftragten unter privacy@holidayyachts.com kontaktieren.`
+Für Datenschutzanfragen können Sie auch unseren Datenschutzbeauftragten unter privacy@holidaygulet.com kontaktieren.`
         }
       ]
     }
@@ -404,11 +404,11 @@ Für Datenschutzanfragen können Sie auch unseren Datenschutzbeauftragten unter 
               </h3>
               <div className="flex flex-wrap gap-6">
                 <a
-                  href="mailto:info@holidayyachts.com"
+                  href="mailto:info@holidaygulet.com"
                   className="flex items-center gap-2 text-amber-600 hover:text-amber-700"
                 >
                   <Mail className="h-5 w-5" />
-                  info@holidayyachts.com
+                  info@holidaygulet.com
                 </a>
                 <a
                   href="tel:+902526144757"

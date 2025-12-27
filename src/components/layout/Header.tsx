@@ -58,11 +58,11 @@ export function Header() {
               +90 252 614 47 57
             </a>
             <a
-              href="mailto:info@holidayyachts.com"
+              href="mailto:info@holidaygulet.com"
               className="flex items-center gap-2 hover:text-amber-400 transition-colors"
             >
               <Mail className="h-4 w-4" />
-              info@holidayyachts.com
+              info@holidaygulet.com
             </a>
           </div>
           <div className="flex items-center gap-4">

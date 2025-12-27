@@ -124,8 +124,8 @@ export default function ContactPage() {
     {
       icon: Mail,
       titleKey: "contact.email",
-      content: ["info@holidayyachts.com"],
-      link: "mailto:info@holidayyachts.com",
+      content: ["info@holidaygulet.com"],
+      link: "mailto:info@holidaygulet.com",
     },
     {
       icon: MapPin,
