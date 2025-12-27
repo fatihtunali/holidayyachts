@@ -51,6 +51,7 @@ export interface Yacht {
   exclusions?: string[];
   currency: 'EUR' | 'USD' | 'TRY';
   available: boolean;
+  fullyBooked?: boolean;
 }
 
 export interface TranslatedYacht extends Omit<Yacht, 'translations'> {

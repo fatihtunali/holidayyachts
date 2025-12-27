@@ -231,32 +231,32 @@ Erleben Sie das ultimative Blaue-Reise-Abenteuer an Bord der M/S Holiday 5, wo g
 
 Built in 2019 with attention to every detail, Holiday 6 features contemporary interiors, efficient deck layouts, and state-of-the-art navigation equipment. Her dedicated crew of 3 provides personalized service and expert local knowledge.
 
-Discover the magic of the Turkish Riviera aboard M/S Holiday 6, where modern luxury meets timeless seafaring tradition.`,
-    shortDescription: "Modern 24m gulet with 4 cabins, perfect for families and small groups of up to 8 guests.",
+This yacht is fully booked for the 2025 season.`,
+    shortDescription: "Modern 24m gulet with 4 cabins - Fully booked for 2025 season.",
     translations: {
       en: {
         description: `M/S Holiday 6 is a modern 24-meter gulet designed for comfort and style. Her 4 well-appointed cabins comfortably host up to 8 guests, making her perfect for smaller groups and families seeking a premium sailing experience.
 
 Built in 2019 with attention to every detail, Holiday 6 features contemporary interiors, efficient deck layouts, and state-of-the-art navigation equipment. Her dedicated crew of 3 provides personalized service and expert local knowledge.
 
-Discover the magic of the Turkish Riviera aboard M/S Holiday 6, where modern luxury meets timeless seafaring tradition.`,
-        shortDescription: "Modern 24m gulet with 4 cabins, perfect for families and small groups of up to 8 guests.",
+This yacht is fully booked for the 2025 season.`,
+        shortDescription: "Modern 24m gulet with 4 cabins - Fully booked for 2025 season.",
       },
       fr: {
         description: `M/S Holiday 6, konfor ve stil için tasarlanmış modern bir 24 metrelik gulettir. 4 iyi donatılmış kamarası ile 8 misafire kadar rahatça ev sahipliği yaparak premium bir yelken deneyimi arayan küçük gruplar ve aileler için mükemmeldir.
 
 2019 yılında her detaya dikkat edilerek inşa edilmiş olan Holiday 6, çağdaş iç mekanlar, verimli güverte düzeni ve son teknoloji navigasyon ekipmanları sunar. 3 kişilik özel mürettebatı kişiselleştirilmiş hizmet ve uzman yerel bilgi sağlar.
 
-Modern lüksün zamansız denizcilik geleneğiyle buluştuğu M/S Holiday 6'da Türkiye Rivierası'nın büyüsünü keşfedin.`,
-        shortDescription: "4 kamaralı modern 24m gulet, 8 kişiye kadar aileler ve küçük gruplar için mükemmel.",
+Ce yacht est complet pour la saison 2025.`,
+        shortDescription: "Gulet moderne de 24m avec 4 cabines - Complet pour la saison 2025.",
       },
       de: {
         description: `Die M/S Holiday 6 ist eine moderne 24-Meter-Gulet, die für Komfort und Stil konzipiert wurde. Ihre 4 gut ausgestatteten Kabinen bieten bequem Platz für bis zu 8 Gäste und sind damit perfekt für kleinere Gruppen und Familien, die ein erstklassiges Segelerlebnis suchen.
 
 Die 2019 mit Liebe zum Detail erbaute Holiday 6 verfügt über zeitgenössische Innenräume, effiziente Deck-Layouts und modernste Navigationsausrüstung. Ihre engagierte 3-köpfige Crew bietet personalisierten Service und lokales Expertenwissen.
 
-Entdecken Sie die Magie der türkischen Riviera an Bord der M/S Holiday 6, wo moderner Luxus auf zeitlose Seefahrertradition trifft.`,
-        shortDescription: "Moderne 24m Gulet mit 4 Kabinen, perfekt für Familien und kleine Gruppen bis zu 8 Gäste.",
+Diese Yacht ist für die Saison 2025 ausgebucht.`,
+        shortDescription: "Moderne 24m Gulet mit 4 Kabinen - Ausgebucht für Saison 2025.",
       },
     },
     features: [
@@ -287,11 +287,7 @@ Entdecken Sie die Magie der türkischen Riviera an Bord der M/S Holiday 6, wo mo
       { id: "h6-6", src: "/assets/images/yachts/holiday6/06.webp", alt: "M/S Holiday 6 Saloon", category: "interior" },
     ],
     thumbnail: "/assets/images/yachts/holiday6/01.webp",
-    pricePerWeek: {
-      low: 9000,
-      mid: 12000,
-      high: 16000,
-    },
+    fullyBooked: true,
     currency: "EUR",
     available: true,
   },
