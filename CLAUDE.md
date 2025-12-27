@@ -19,8 +19,8 @@ npm run start        # Start production server
 # Linting
 npm run lint         # Run ESLint
 
-# Deploy to production server
-ssh holidaygulet@142.93.136.228 "cd ~/holidayyachts && git pull && source ~/.nvm/nvm.sh && npm install && npm run build && pm2 restart all"
+# Deploy to production server (run as root, executes as holidaygulet user)
+ssh root@142.93.136.228 'su - holidaygulet -c "cd ~/holidaygulet/holidayyachts && git pull && source ~/.bashrc && npm install && npm run build && pm2 restart all"'
 ```
 
 ## Architecture
@@ -69,7 +69,7 @@ Yachts support two pricing models:
 - **Region**: Amsterdam (AMS3)
 - **User**: holidaygulet
 - **Process manager**: PM2
-- **App location**: /home/holidaygulet/holidayyachts
+- **App location**: /home/holidaygulet/holidaygulet/holidayyachts
 
 ## Database Credentials
 
