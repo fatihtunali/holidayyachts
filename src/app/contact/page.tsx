@@ -131,8 +131,8 @@ export default function ContactPage() {
       icon: MapPin,
       titleKey: "contact.address",
       content: [
-        "Tuzla Mahallesi, 509. Sokak No:6",
-        "Fethiye, Mugla 48300, Turkey",
+        "Cumhuriyet Mah. Çarşı Cad. No 1/307",
+        "Likya İş Merkezi, Fethiye, Muğla",
       ],
     },
     {

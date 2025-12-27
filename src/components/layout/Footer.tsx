@@ -170,11 +170,11 @@ export function Footer() {
               <li className="flex items-start gap-3 text-slate-400">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
                 <span className="text-sm">
-                  Tuzla Mahallesi, 509. Sokak No:6
+                  Cumhuriyet Mah. Çarşı Cad. No 1/307
                   <br />
-                  Fethiye, Mugla 48300
+                  Likya İş Merkezi
                   <br />
-                  Turkey
+                  Fethiye, Muğla - Turkey
                 </span>
               </li>
             </ul>
