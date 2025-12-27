@@ -232,6 +232,10 @@ const translations: Record<Language, Record<string, string>> = {
     "yachtDetail.portFees": "Port fees",
     "yachtDetail.built": "Built",
     "yachtDetail.renovated": "Renovated",
+    "yachtDetail.fullyBooked": "Fully Booked",
+    "yachtDetail.fullyBookedMessage": "This yacht is fully booked for the 2025 season.",
+    "yachtDetail.viewOtherYachts": "View Other Yachts",
+    "yachtDetail.contactForNextSeason": "Contact for Next Season",
 
     // Itinerary Detail Page
     "itineraryDetail.allItineraries": "All Itineraries",
@@ -664,6 +668,10 @@ const translations: Record<Language, Record<string, string>> = {
     "yachtDetail.portFees": "Hafengebühren",
     "yachtDetail.built": "Baujahr",
     "yachtDetail.renovated": "Renoviert",
+    "yachtDetail.fullyBooked": "Ausgebucht",
+    "yachtDetail.fullyBookedMessage": "Diese Yacht ist für die Saison 2025 vollständig ausgebucht.",
+    "yachtDetail.viewOtherYachts": "Andere Yachten Ansehen",
+    "yachtDetail.contactForNextSeason": "Kontakt für Nächste Saison",
 
     // Itinerary Detail Page
     "itineraryDetail.allItineraries": "Alle Routen",
@@ -1095,6 +1103,10 @@ const translations: Record<Language, Record<string, string>> = {
     "yachtDetail.portFees": "Frais de port",
     "yachtDetail.built": "Construit",
     "yachtDetail.renovated": "Rénové",
+    "yachtDetail.fullyBooked": "Complet",
+    "yachtDetail.fullyBookedMessage": "Ce yacht est complet pour la saison 2025.",
+    "yachtDetail.viewOtherYachts": "Voir d'Autres Yachts",
+    "yachtDetail.contactForNextSeason": "Contact pour la Prochaine Saison",
 
     // Itinerary Detail Page
     "itineraryDetail.allItineraries": "Tous les Itinéraires",

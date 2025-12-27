@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh root@142.93.136.228 \"cd /var/www/lunarisceramic && echo ''=== LUNARISCERAMIC ==='' && npm audit 2>&1 | head -50\")",
+      "Bash(ssh root@142.93.136.228 \"cd /home/holidaygulet/holidayyachts && echo ''=== HOLIDAYYACHTS ==='' && npm audit 2>&1 | head -50\")",
+      "Bash(ssh root@142.93.136.228 \"cd /home/funnytourism/funnytourism/app && echo ''=== FUNNYTOURISM ==='' && npm audit 2>&1 | head -50\")",
+      "Bash(ssh root@142.93.136.228 \"ss -tlnp | grep LISTEN\")",
+      "Bash(ssh root@142.93.136.228 \"ufw status verbose 2>/dev/null || iptables -L -n 2>/dev/null | head -30\")",
+      "Bash(ssh root@142.93.136.228:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
